@@ -1,0 +1,11 @@
+:root {
+  --primary-color: #9D4EDD; /* Vibrant purple */
+  --primary-color-rgb: 157, 78, 221; /* RGB values for rgba usage */
+  --secondary-color: #FF7E5F; /* Coral orange - better complement to purple */
+  --secondary-color-rgb: 255, 126, 95; /* RGB values for rgba usage */
+  --dark-bg: #121212;
+  --darker-bg: #1E1E1E;
+  --light-text: #f8f8f8; /* Slightly warmer white */
+  --gray-text: #B8B8B8; /* Slightly lighter gray */
+  --hover-color: #BB86FC;
+}

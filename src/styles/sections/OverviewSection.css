@@ -1,0 +1,247 @@
+/* Program Overview Section */
+.program-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.overview-card {
+  background: rgba(40, 40, 40, 0.5);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.overview-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border-color: rgba(var(--primary-color-rgb), 0.2);
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.overview-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--light-text);
+}
+
+.overview-card p {
+  font-size: 1rem;
+  color: var(--gray-text);
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+/* Curriculum Overview Table */
+.curriculum-overview {
+  margin-top: 4rem;
+  padding: 2rem;
+  background: rgba(40, 40, 40, 0.3);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.curriculum-overview h3 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.week-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.week-tab {
+  background: rgba(30, 30, 30, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--gray-text);
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.week-tab.active {
+  background: linear-gradient(90deg, rgba(var(--primary-color-rgb), 0.3), rgba(var(--secondary-color-rgb), 0.3));
+  color: var(--light-text);
+  border-color: rgba(var(--primary-color-rgb), 0.5);
+  box-shadow: 0 4px 15px rgba(var(--primary-color-rgb), 0.2);
+}
+
+.week-tab:hover {
+  transform: translateY(-2px);
+}
+
+.curriculum-table-container {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.curriculum-headers {
+  display: grid;
+  grid-template-columns: 100px 1fr 1fr 1.5fr;
+  background: rgba(30, 30, 30, 0.8);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  font-weight: 600;
+}
+
+.curriculum-headers > div {
+  padding: 0.5rem 1rem;
+  color: var(--light-text);
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.curriculum-day {
+  display: grid;
+  grid-template-columns: 100px 1fr 1fr 1.5fr;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background-color 0.2s ease;
+}
+
+.curriculum-day:hover {
+  background-color: rgba(50, 50, 50, 0.4);
+}
+
+.curriculum-day > div {
+  padding: 0.8rem 1rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.day-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.3rem;
+}
+
+.day-name {
+  font-weight: 600;
+  color: var(--light-text);
+}
+
+.day-date {
+  font-size: 0.8rem;
+  color: var(--gray-text);
+}
+
+.day-dev {
+  color: rgba(var(--primary-color-rgb), 0.9);
+  font-weight: 500;
+}
+
+.day-pm {
+  color: rgba(var(--secondary-color-rgb), 0.9);
+  font-weight: 500;
+}
+
+.day-assignment {
+  font-style: italic;
+  color: var(--gray-text);
+}
+
+.curriculum-legend {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--gray-text);
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.dev-color {
+  background-color: var(--primary-color);
+}
+
+.pm-color {
+  background-color: var(--secondary-color);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .curriculum-table-container {
+    font-size: 0.9rem;
+  }
+  
+  .curriculum-headers, .curriculum-day {
+    grid-template-columns: 80px 1fr 1fr;
+  }
+  
+  .header-assignment, .day-assignment {
+    display: none; /* Hide assignment on smaller screens */
+  }
+  
+  .week-tabs {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .week-tab {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .curriculum-table-container {
+    overflow-x: auto; /* Enable horizontal scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  }
+  
+  .curriculum-headers, .curriculum-day {
+    grid-template-columns: 80px 1fr 1fr; /* Keep all three columns */
+    min-width: 400px; /* Ensure minimum width for content */
+  }
+  
+  .header-pm, .day-pm {
+    display: block; /* Make sure PM track is visible */
+  }
+  
+  .curriculum-table-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 20px;
+    background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.2));
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  
+  .curriculum-legend {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}

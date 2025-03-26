@@ -1,0 +1,127 @@
+/* Tools & Tech Section */
+.tools-section {
+  margin-bottom: 3rem;
+}
+
+.tools-section h3 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--light-text);
+  position: relative;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.tool-card {
+  background: rgba(40, 40, 40, 0.5);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  height: 100%;
+}
+
+.tool-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border-color: rgba(var(--secondary-color-rgb), 0.2);
+}
+
+.tool-card h4 {
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.tool-card p {
+  font-size: 0.95rem;
+  color: var(--gray-text);
+  line-height: 1.6;
+}
+
+/* Iridescent Background for Coming Soon card */
+.iridescent-bg {
+  position: relative;
+  overflow: hidden;
+  background: rgba(40, 40, 40, 0.5);
+}
+
+.iridescent-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    125deg, 
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(var(--primary-color-rgb), 0.08) 25%, 
+    rgba(var(--secondary-color-rgb), 0.08) 50%,
+    rgba(125, 185, 232, 0.08) 75%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  background-size: 200% 200%;
+  opacity: 0.8;
+  z-index: 0;
+  animation: iridescent-shift 10s linear infinite;
+}
+
+.iridescent-bg::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  background: radial-gradient(
+    circle,
+    rgba(var(--primary-color-rgb), 0.03) 10%,
+    rgba(var(--secondary-color-rgb), 0.03) 30%,
+    rgba(255, 255, 255, 0.03) 70%
+  );
+  opacity: 0.5;
+  z-index: 0;
+  filter: blur(20px);
+  transform-origin: center;
+  animation: iridescent-rotate 20s ease infinite;
+}
+
+.iridescent-bg h4, 
+.iridescent-bg p {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes iridescent-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes iridescent-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.iridescent-bg:hover::before {
+  opacity: 1;
+  animation-duration: 7s;
+}
+
+.iridescent-bg:hover::after {
+  opacity: 0.7;
+  animation-duration: 15s;
+}

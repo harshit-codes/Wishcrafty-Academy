@@ -1,0 +1,85 @@
+/* Teaching Methodology Section */
+.methodology-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.methodology-card {
+  background: rgba(40, 40, 40, 0.5);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  height: 100%;
+}
+
+.methodology-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border-color: rgba(var(--primary-color-rgb), 0.2);
+}
+
+.card-icon-large {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.curriculum-tracks {
+  margin-top: 4rem;
+}
+
+.track-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--light-text);
+  position: relative;
+}
+
+.tracks-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.track {
+  background: linear-gradient(145deg, rgba(40, 40, 40, 0.7), rgba(30, 30, 30, 0.7));
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  height: 100%;
+}
+
+.track h4 {
+  font-size: 1.3rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.track-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.track-list li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 0.8rem 0;
+  color: var(--gray-text);
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.track-list li:before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--secondary-color);
+}
+
+.track-list li:last-child {
+  border-bottom: none;
+}

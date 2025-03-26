@@ -1,0 +1,344 @@
+.hero-section {
+  position: relative;
+  color: var(--light-text);
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Keep this for vertical centering */
+  overflow: hidden;
+  background-color: var(--dark-bg);
+  margin-top: 0;
+  width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  padding-top: 100px; /* Increased padding for navbar space */
+  padding-bottom: 2rem; /* Add bottom padding */
+  box-sizing: border-box;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.2) 0%, rgba(18, 18, 18, 0.95) 100%);
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: 2rem; /* Equal padding all around */
+  max-width: 600px;
+  width: 100%;
+  margin: auto; /* This centers the content vertically when used with flex parent */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100vh - 140px); /* Account for navbar and padding */
+}
+
+/* Typography */
+.hero-section h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  background: linear-gradient(90deg, #BB86FC, #8A2BE2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+}
+
+.hero-section h1.hero-title {
+  margin-bottom: 3rem; /* Increase bottom margin */
+  line-height: 1.2;
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+  background-clip: unset;
+  color: var(--light-text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2em; /* Increased gap for better spacing */
+  width: 100%;
+}
+
+.product-label {
+  background: linear-gradient(90deg, #BB86FC, #9D4EDD);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  font-size: 3rem;
+  margin-right: 0.5rem;
+}
+
+.hero-title .subtitle {
+  background: linear-gradient(90deg, var(--secondary-color), #FFB347); /* Updated gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-top: 0.5em;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  max-width: 600px; /* Slightly narrower */
+  margin: 0 auto 3rem; /* Adjusted margin before buttons */
+  color: var(--light-text);
+  line-height: 1.6;
+}
+
+/* Background style for rotating text */
+.bg-purple-700 {
+  background-color: rgba(157, 78, 221, 0.9);
+  font-size: 2.2rem;
+  height: 3.2rem;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(157, 78, 221, 0.3);
+}
+
+/* CTA Buttons */
+.cta-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.cta-button {
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.cta-button.primary {
+  position: relative;
+  background: linear-gradient(135deg, #9D4EDD, #7B2CBF);
+  color: white;
+  border: none;
+  z-index: 1;
+}
+
+.cta-button.primary::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--primary-color));
+  background-size: 200% 100%;
+  border-radius: 33px;
+  z-index: -1;
+  animation: shineBorder 3s linear infinite;
+  opacity: 0.7;
+}
+
+.cta-button.primary:hover {
+  background: linear-gradient(135deg, #BB86FC, #9D4EDD);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(157, 78, 221, 0.6);
+}
+
+.cta-button.primary:hover::before {
+  opacity: 1;
+  animation-duration: 2s;
+}
+
+.cta-button.secondary {
+  background-color: transparent;
+  color: var(--light-text);
+  border: 2px solid var(--secondary-color);
+  padding: calc(1rem - 2px) calc(2.5rem - 2px);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button.secondary::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(60deg, transparent, rgba(255, 126, 95, 0.2), transparent); /* Updated color */
+  transform: rotate(45deg);
+  animation: shineSweep 3s infinite linear;
+  z-index: -1;
+}
+
+.cta-button.secondary:hover {
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+  background-color: rgba(255, 126, 95, 0.05); /* Updated color */
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 126, 95, 0.3); /* Updated color */
+}
+
+/* Animations */
+@keyframes shineBorder {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes shineSweep {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) rotate(45deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-section {
+    margin-top: 60px;
+    min-height: 80vh;
+  }
+  
+  .hero-section h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-section h1.hero-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .product-label {
+    font-size: 2.3rem;
+  }
+  
+  .hero-title .subtitle {
+    font-size: 1.5rem;
+  }
+  
+  .bg-purple-700 {
+    font-size: 1.8rem;
+    height: 2.8rem;
+  }
+  
+  .hero-section p {
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .hero-content {
+    min-height: calc(100vh - 120px);
+    padding: 1.5rem;
+  }
+  
+  .logo-container {
+    margin-bottom: 2.5rem;
+    margin-top: -1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    min-height: 75vh;
+  }
+  
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-section h1.hero-title {
+    font-size: 2rem;
+  }
+  
+  .product-label {
+    font-size: 1.9rem;
+  }
+  
+  .hero-title .subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .bg-purple-700 {
+    font-size: 1.6rem;
+    height: 2.4rem;
+  }
+  
+  .hero-section p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-button {
+    padding: 0.8rem 2rem;
+  }
+}
+
+@media (max-height: 700px) {
+  /* For shorter screens */
+  .logo-container {
+    margin-bottom: 1.5rem;
+    margin-top: 0;
+  }
+  
+  .hero-logo {
+    width: 90px;
+  }
+  
+  .hero-section h1.hero-title {
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-section p {
+    margin-bottom: 2rem;
+  }
+}
+
+.logo-container {
+  margin-bottom: 2.5rem; /* Adjusted space after logo */
+  margin-top: -2rem; /* Pull logo up slightly */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-logo {
+  width: 100px; /* Slightly smaller logo */
+  height: auto;
+  filter: drop-shadow(0 0 10px rgba(187, 134, 252, 0.5));
+  opacity: 0.9;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.hero-logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 12px rgba(187, 134, 252, 0.7));
+}

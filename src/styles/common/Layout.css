@@ -1,0 +1,39 @@
+.App {
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--light-text);
+  background-color: var(--dark-bg);
+  min-height: 100vh;
+}
+
+main {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* For Firefox */
+}
+
+main::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
+.content-container {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
