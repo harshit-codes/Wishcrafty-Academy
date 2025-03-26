@@ -53,7 +53,8 @@ const SocialIcons = {
   youtube: YouTubeIcon
 };
 
-const Footer = ({ setShowLegalModal }) => {
+// Modify the component declaration to accept the scrollToSection prop
+const Footer = ({ setShowLegalModal, navigationSections }) => {
   const currentYear = new Date().getFullYear();
   
   // Create WhatsApp link
@@ -68,6 +69,7 @@ const Footer = ({ setShowLegalModal }) => {
           <div className="footer-brand">
             <img src={logo} alt={`${siteConfig.siteName} Logo`} className="footer-logo-img" />
             <p className="footer-tagline">{siteConfig.siteDescription}</p>
+            <p className="footer-slogan">{siteConfig.siteTagline}</p>
             <div className="footer-social">
               {/* Generate social icons from config */}
               {Object.entries(siteConfig.social).map(([platform, data]) => (
@@ -87,11 +89,46 @@ const Footer = ({ setShowLegalModal }) => {
             <div className="footer-links-column">
               <h4>Program</h4>
               <ul>
-                <li><a href="#overview">Overview</a></li>
-                <li><a href="#teaching">Methodology</a></li>
-                <li><a href="#tools">Tools & Tech</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#faq">FAQs</a></li>
+                <li>
+                  <a 
+                    href="#overview"
+                    className="footer-nav-button"
+                  >
+                    Overview
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="#teaching"
+                    className="footer-nav-button"
+                  >
+                    Methodology
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="#tools"
+                    className="footer-nav-button"
+                  >
+                    Tools & Tech
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="#pricing"
+                    className="footer-nav-button"
+                  >
+                    Pricing
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="#faq"
+                    className="footer-nav-button"
+                  >
+                    FAQs
+                  </a>
+                </li>
               </ul>
             </div>
             

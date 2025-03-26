@@ -11,19 +11,21 @@ const ScrollVelocityText = ({ text, repeatCount = 4, className = '', speed = 1, 
     
     let position = 0;
     const textElement = container.querySelector('.scroll-text');
-    const scrollWidth = textElement.scrollWidth;
     
     const animate = () => {
-      // Update position based on speed (pixels per frame)
+      // Update position based on speed
       position -= 0.5 * speed;
       
-      // Reset position when text has fully scrolled
-      if (Math.abs(position) >= scrollWidth / repeatCount) {
+      // Reset position when text has scrolled far enough
+      if (Math.abs(position) >= 500) {
         position = 0;
       }
       
       // Apply position update
-      container.querySelector('.scroll-text-inner').style.transform = `translateX(${position}px)`;
+      const innerElement = container.querySelector('.scroll-text-inner');
+      if (innerElement) {
+        innerElement.style.transform = `translateX(${position}px)`;
+      }
       
       // Continue animation
       animationRef.current = requestAnimationFrame(animate);
@@ -34,9 +36,11 @@ const ScrollVelocityText = ({ text, repeatCount = 4, className = '', speed = 1, 
     
     // Clean up on unmount
     return () => {
-      cancelAnimationFrame(animationRef.current);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
     };
-  }, [repeatCount, speed]);
+  }, [speed]);
   
   // Create repeated text elements
   const repeatedText = Array(repeatCount).fill(text).join(' • ');

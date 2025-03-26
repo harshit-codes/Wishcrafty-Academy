@@ -1,20 +1,20 @@
 .hero-section {
   position: relative;
   color: var(--light-text);
-  padding: 0;
-  min-height: 100vh;
+  padding-top: 100px; /* Increased padding to account for announcement + navbar */
+  min-height: calc(100vh - 30px); /* Subtract announcement banner height */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center; /* Keep this for vertical centering */
   overflow: hidden;
   background-color: var(--dark-bg);
-  margin-top: 30px; /* Add margin to account for the fixed banner */
+  margin-top: 0; /* Remove any top margin */
   width: 100%;
   scroll-snap-align: start;
   scroll-snap-stop: always;
-  padding-top: 100px; /* Increased padding for navbar space */
-  padding-bottom: 2rem; /* Add bottom padding */
+  padding-top: 0; /* Remove extra top padding */
+  padding-bottom: 0; /* Remove extra bottom padding */
   box-sizing: border-box;
 }
 
@@ -27,25 +27,26 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.2) 0%, rgba(18, 18, 18, 0.95) 100%);
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(10, 10, 10, 0.4) 0%, rgba(0, 0, 0, 0.8) 100%);
   z-index: 2;
 }
 
+/* Center hero content properly */
 .hero-content {
   position: relative;
   z-index: 3;
   text-align: center;
-  padding: 2rem; /* Equal padding all around */
-  max-width: 600px;
+  padding: 0 2rem;
+  max-width: 750px;
   width: 100%;
-  margin: auto; /* This centers the content vertically when used with flex parent */
-  box-sizing: border-box;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: calc(100vh - 140px); /* Account for navbar and padding */
+  align-items: center;
+  min-height: 85vh; /* Use min-height instead of height */
 }
 
 /* Typography */
@@ -61,7 +62,7 @@
 }
 
 .hero-section h1.hero-title {
-  margin-bottom: 3rem; /* Increase bottom margin */
+  margin-bottom: 1.5rem;
   line-height: 1.2;
   background: none;
   -webkit-background-clip: unset;
@@ -71,6 +72,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .title-wrapper {
@@ -88,6 +90,7 @@
   font-weight: 800;
   font-size: var(--font-size-xxxl);
   margin-right: 0.5rem;
+  display: inline-block;
 }
 
 .hero-title .subtitle {
@@ -127,7 +130,7 @@
   gap: 1.5rem;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.8rem;
 }
 
 .cta-button {
@@ -147,6 +150,9 @@
   color: white;
   border: none;
   z-index: 1;
+  font-size: var(--font-size-md);
+  padding: 0.8rem 2rem;
+  font-weight: 600;
 }
 
 .cta-button.primary::before {
@@ -262,11 +268,31 @@
   .hero-content {
     min-height: calc(100vh - 120px);
     padding: 1.5rem;
+    height: calc(100vh - 80px);
+    padding: 1rem;
   }
   
   .logo-container {
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
     margin-top: -1rem;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-logo {
+    height: 50px;
+  }
+  
+  .product-label, .rotating-word-container {
+    font-size: 2.5rem !important;
+  }
+  
+  .hero-content p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
   }
 }
 
@@ -304,6 +330,23 @@
   .cta-button {
     padding: 0.8rem 2rem;
   }
+
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  .product-label, .rotating-word-container {
+    font-size: 2rem !important;
+  }
+  
+  .hero-content p {
+    font-size: 0.95rem;
+  }
+  
+  .cta-button.primary {
+    font-size: 1rem;
+    padding: 0.7rem 1.6rem;
+  }
 }
 
 @media (max-height: 700px) {
@@ -327,7 +370,7 @@
 }
 
 .logo-container {
-  margin-bottom: 2.5rem; /* Adjusted space after logo */
+  margin-bottom: 2rem; /* Adjusted space after logo */
   margin-top: -2rem; /* Pull logo up slightly */
   display: flex;
   justify-content: center;
@@ -340,6 +383,8 @@
   filter: drop-shadow(0 0 10px rgba(187, 134, 252, 0.5));
   opacity: 0.9;
   transition: transform 0.3s ease, filter 0.3s ease;
+  height: 60px;
+  width: auto;
 }
 
 .hero-logo:hover {
@@ -351,11 +396,15 @@
   display: none;
 }
 
+/* Product label and rotating text container */
 .flex.items-center.justify-center {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  margin-bottom: 1.2rem;
+  width: auto; /* Allow natural width */
 }
 
 /* Ensure proper vertical alignment */
@@ -376,4 +425,50 @@
 
 .navbar-wrapper {
   margin-top: 30px; /* Add margin to account for the fixed banner */
+}
+
+.hero-title {
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  width: 100%;
+}
+
+.title-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.subtitle {
+  display: block;
+  margin-top: 1rem;
+  font-size: 1.8rem;
+  line-height: 1.3;
+  text-align: center;
+  max-width: 90%; /* Prevent too wide text */
+  margin: 0 auto 1.5rem; /* Center and add bottom margin */
+}
+
+/* Add a spacer at the top of the page to account for the banner */
+body::before {
+  content: '';
+  display: block;
+  height: 30px; /* Height of the announcement banner */
+  width: 100%;
+}
+
+/* Rotating container - match styling */
+.rotating-word-container {
+  font-size: var(--font-size-xxxl) !important;
+  font-weight: 800 !important;
+}
+
+/* Description paragraph */
+.hero-content p {
+  font-size: var(--font-size-md);
+  color: var(--gray-text);
+  line-height: 1.6;
+  margin-bottom: 2rem; /* Increased bottom margin */
+  max-width: 90%;
 }

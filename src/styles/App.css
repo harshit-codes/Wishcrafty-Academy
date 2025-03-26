@@ -1,0 +1,238 @@
+:root {
+  --navbar-height: 80px;
+  --footer-height: 300px;
+}
+
+.App {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-background-primary);
+  color: var(--color-text-primary);
+  overflow-x: hidden;
+  position: relative;
+}
+
+.content-wrapper {
+  flex: 1 0 auto; /* Changed to flex-grow: 1, flex-shrink: 0 to ensure it takes all available space */
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - var(--footer-height, 300px)); /* Calculate height excluding footer */
+  padding-top: var(--navbar-height, 80px); /* Account for fixed navbar */
+}
+
+main {
+  flex: 1 0 auto; /* Same flex treatment as content-wrapper */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+section {
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.site-footer {
+  flex-shrink: 0; /* Prevent footer from shrinking */
+  width: 100%;
+  position: relative;
+  z-index: 10;
+  height: var(--footer-height, 300px); /* Set explicit height for footer */
+}
+
+/* Hide the target fragments */
+:target::before {
+  content: "";
+  display: block;
+  height: 0; /* Adjust to match your header height */
+  margin-top: -0px; /* Negative value of header height */
+  visibility: hidden;
+}
+
+/* Style for footer navigation buttons to look like links */
+.footer-nav-button {
+  background: none;
+  border: none;
+  color: var(--color-text-primary);
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.footer-nav-button:hover {
+  text-decoration: underline;
+}
+
+/* Make section IDs invisible */
+section[id]::before {
+  content: "";
+  display: block;
+  height: 0;
+  margin-top: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Hide any element with an ID that might be used for navigation */
+h1[id], h2[id], h3[id], h4[id], h5[id], h6[id], div[id] {
+  position: relative;
+}
+
+h1[id]::before, h2[id]::before, h3[id]::before, h4[id]::before, h5[id]::before, h6[id]::before, div[id]::before {
+  content: "";
+  display: block;
+  height: 0;
+  margin: 0;
+  visibility: hidden;
+  position: absolute;
+}
+
+/* Remove fragment indicators from the display */
+:target {
+  scroll-margin-top: 100px; /* Adds margin at the top when scrolling to target */
+}
+
+/* Remove all native URL fragment behaviors */
+html {
+  scroll-behavior: auto !important;
+}
+
+/* Style for navigation buttons in the navbar */
+.nav-link {
+  background: none;
+  border: none;
+  color: var(--color-text-primary);
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s ease all;
+}
+
+.nav-link:hover {
+  opacity: 0.8;
+}
+
+.navbar-links li.active .nav-link {
+  color: var(--color-primary, #4a90e2);
+}
+
+.navbar-links li {
+  display: flex;
+  align-items: center;
+}
+
+/* Make sure SVG icons are visible */
+.nav-link svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+}
+
+/* Hide section ID markers completely */
+section[id]::after {
+  display: none;
+}
+
+/* Force hide any potential fragment identifiers */
+*[id]:target::before {
+  display: none;
+}
+
+/* Remove the default focus styles from buttons */
+button:focus {
+  outline: none;
+}
+
+/* Navbar styles */
+.navbar-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+}
+
+.nav-link {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Override any default list styles */
+.navbar-links li {
+  padding: 0;
+  margin: 0;
+}
+
+/* Force sections to have proper display and positioning */
+section[id] {
+  display: block;
+  position: relative;
+  scroll-margin-top: var(--navbar-height, 80px);
+  scroll-snap-margin-top: 100px; /* For older browsers */
+  z-index: 1;
+  width: 100%;
+  padding-top: 40px; /* Ensure content starts below navbar */
+  margin-top: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* Fix for smooth scrolling across browsers */
+html, body {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+/* Make menu items clearly interactive */
+.nav-link {
+  cursor: pointer !important;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-link:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.nav-link:active {
+  transform: translateY(1px);
+}
+
+/* Fix for active section highlighting */
+.navbar-links li.active .nav-link {
+  color: var(--color-primary, #4a90e2);
+  position: relative;
+}
+
+.navbar-links li.active .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-primary, #4a90e2);
+  border-radius: 50%;
+}
+
+/* Fix navbar positioning */
+.navbar-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: var(--navbar-height, 80px);
+}

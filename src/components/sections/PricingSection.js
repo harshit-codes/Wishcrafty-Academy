@@ -109,7 +109,7 @@ const PricingSection = () => {
   }));
 
   return (
-    <section id="pricing" className="content-section">
+    <section className="content-section" id="pricing">
       <div className="content-section-inner">
         <h2>Program Fee</h2>
         

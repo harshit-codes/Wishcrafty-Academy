@@ -1,207 +1,142 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { FeaturesIcon, BenefitsIcon, ProcessIcon, ContactIcon, OverviewIcon, TeachingIcon, ToolsIcon, PricingIcon, FaqIcon } from './components/SectionIcons';
-import { ToastProvider } from './contexts/ToastContext';
-import { ContentProvider } from './contexts/ContentContext';
-
-// Import components
-import Navbar from './components/Navbar';
+import React from 'react';
 import HeroSection from './components/sections/HeroSection';
 import OverviewSection from './components/sections/OverviewSection';
 import TeachingSection from './components/sections/TeachingSection';
 import ToolsSection from './components/sections/ToolsSection';
 import PricingSection from './components/sections/PricingSection';
 import FaqSection from './components/sections/FaqSection';
+import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import LegalModal from './components/LegalModal';
+import MetaTags from './components/MetaTags';
+import { ContentProvider } from './contexts/ContentContext';
+import { ToastProvider } from './contexts/ToastContext';
+import { OverviewIcon, TeachingIcon, ToolsIcon, PricingIcon, FaqIcon } from './components/SectionIcons';
+import './styles/App.css';
 
-// Simple error boundary component
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false, error: null };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true, error };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    console.error("Error caught by boundary:", error, errorInfo);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div style={{ 
-          padding: '20px', 
-          textAlign: 'center', 
-          color: 'white',
-          backgroundColor: '#121212',
-          height: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}>
-          <h1>Something went wrong</h1>
-          <p>There was an error loading the application. Please try refreshing the page.</p>
-          <button 
-            onClick={() => window.location.reload()}
-            style={{ 
-              background: '#9D4EDD', 
-              color: 'white', 
-              border: 'none', 
-              padding: '10px 20px', 
-              borderRadius: '20px',
-              marginTop: '20px',
-              cursor: 'pointer'
-            }}
-          >
-            Refresh Page
-          </button>
-          {this.state.error && (
-            <pre style={{ 
-              marginTop: '20px', 
-              padding: '15px', 
-              background: 'rgba(255,255,255,0.1)', 
-              borderRadius: '8px',
-              textAlign: 'left',
-              maxWidth: '80%',
-              overflow: 'auto'
-            }}>
-              {this.state.error.toString()}
-            </pre>
-          )}
-        </div>
-      );
-    }
-
-    return this.props.children;
-  }
-}
+// Define HomeIcon inline since it seems to be missing from SectionIcons
+const HomeIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+  </svg>
+);
 
 function App() {
-  // State for showing legal modal
-  const [showLegalModal, setShowLegalModal] = useState(false);
+  // Use React's useState for state management
+  const [activeSection, setActiveSection] = React.useState('home');
+  const [scrolled, setScrolled] = React.useState(false);
+  const [showLegalModal, setShowLegalModal] = React.useState(false);
   
-  // Track scrolling for navbar
-  const [scrolled, setScrolled] = useState(false);
-  
-  // Track current active section
-  const [activeSection, setActiveSection] = useState('home');
-  
-  // Reference to main content
-  const mainRef = useRef(null);
-  
-  // Define all sections for navbar
-  const sections = [
-    { id: 'overview', name: 'Program Overview', icon: OverviewIcon },
-    { id: 'teaching', name: 'Teaching Methodology', icon: TeachingIcon },
-    { id: 'tools', name: 'Tools & Tech', icon: ToolsIcon },
-    { id: 'pricing', name: 'Program Fee', icon: PricingIcon },
-    { id: 'faq', name: 'FAQs', icon: FaqIcon }
+  // Define sections - exclude home from navigation display
+  const navigationSections = [
+    {
+      id: 'overview',
+      name: 'Program Overview',
+      icon: OverviewIcon,
+    },
+    {
+      id: 'teaching',
+      name: 'Teaching Methodology',
+      icon: TeachingIcon,
+    },
+    {
+      id: 'tools',
+      name: 'Tools & Tech',
+      icon: ToolsIcon,
+    },
+    {
+      id: 'pricing',
+      name: 'Program Fee',
+      icon: PricingIcon,
+    },
+    {
+      id: 'faq',
+      name: 'FAQs',
+      icon: FaqIcon,
+    }
   ];
   
-  // Handle scrolling to section
+  // Simplified scrollToSection function
   const scrollToSection = (sectionId) => {
-    try {
-      const section = document.getElementById(sectionId);
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
-      }
-    } catch (error) {
-      console.error("Error scrolling to section:", error);
-    }
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+    
+    const offset = 100;
+    const sectionPosition = section.getBoundingClientRect().top + window.pageYOffset;
+    
+    window.scrollTo({
+      top: sectionPosition - offset,
+      behavior: 'smooth'
+    });
   };
   
-  // Track scrolling with error handling
-  useEffect(() => {
+  // Track scroll position for navbar appearance
+  React.useEffect(() => {
     const handleScroll = () => {
-      try {
-        setScrolled(window.scrollY > 50);
+      // Update navbar appearance based on scroll position
+      setScrolled(window.scrollY > 50);
+      
+      // Update active section based on scroll position
+      const sections = ['overview', 'teaching', 'tools', 'pricing', 'faq'];
+      
+      // Default to home section
+      let current = 'home';
+      
+      // Find current section in view
+      for (const id of sections) {
+        const section = document.getElementById(id);
+        if (!section) continue;
         
-        // Determine active section based on scroll position
-        const scrollPosition = window.scrollY + 200; // Offset for better detection
+        const sectionTop = section.offsetTop - 150;
+        const sectionBottom = sectionTop + section.offsetHeight;
         
-        let currentSection = 'home';
-        
-        // Check position against each section
-        const homeSection = document.getElementById('home');
-        if (homeSection && scrollPosition < homeSection.offsetTop + homeSection.offsetHeight) {
-          currentSection = 'home';
+        if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
+          current = id;
+          break;
         }
-        
-        sections.forEach(section => {
-          const element = document.getElementById(section.id);
-          if (element && scrollPosition >= element.offsetTop && scrollPosition < element.offsetTop + element.offsetHeight) {
-            currentSection = section.id;
-          }
-        });
-        
-        setActiveSection(currentSection);
-      } catch (error) {
-        console.error("Error handling scroll:", error);
       }
+      
+      setActiveSection(current);
     };
     
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [sections]);
+  }, []);
   
   return (
-    <ErrorBoundary>
-      <ContentProvider>
-        <ToastProvider>
-          <div className="App">
-            {/* Added a div to push content below the fixed announcement banner */}
-            <div className="announcement-spacer"></div>
-            
-            <Navbar 
-              sections={sections} 
-              activeSection={activeSection} 
-              scrolled={scrolled} 
-              scrollToSection={scrollToSection} 
-            />
-            
-            <main ref={mainRef}>
-              {/* Render each section inside its own error boundary */}
-              <ErrorBoundary>
-                <HeroSection />
-              </ErrorBoundary>
-              
-              <ErrorBoundary>
-                <OverviewSection />
-              </ErrorBoundary>
-              
-              <ErrorBoundary>
-                <TeachingSection />
-              </ErrorBoundary>
-              
-              <ErrorBoundary>
-                <ToolsSection />
-              </ErrorBoundary>
-              
-              <ErrorBoundary>
-                <PricingSection />
-              </ErrorBoundary>
-              
-              <ErrorBoundary>
-                <FaqSection />
-              </ErrorBoundary>
-              
-              <ErrorBoundary>
-                <Footer setShowLegalModal={setShowLegalModal} />
-              </ErrorBoundary>
+    <ContentProvider>
+      <ToastProvider>
+        <div className="App">
+          <MetaTags />
+          
+          <Navbar 
+            sections={navigationSections}
+            activeSection={activeSection}
+            scrolled={scrolled}
+            scrollToSection={scrollToSection}
+          />
+          
+          <div className="content-wrapper">
+            <main>
+              <HeroSection />
+              <OverviewSection />
+              <TeachingSection />
+              <ToolsSection />
+              <PricingSection />
+              <FaqSection />
             </main>
             
-            <LegalModal 
-              showLegalModal={showLegalModal} 
-              setShowLegalModal={setShowLegalModal} 
-            />
+            <Footer setShowLegalModal={setShowLegalModal} />
           </div>
-        </ToastProvider>
-      </ContentProvider>
-    </ErrorBoundary>
+          
+          <LegalModal 
+            showLegalModal={showLegalModal}
+            setShowLegalModal={setShowLegalModal}
+          />
+        </div>
+      </ToastProvider>
+    </ContentProvider>
   );
 }
 

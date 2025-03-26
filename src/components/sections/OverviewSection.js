@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import overviewContent from '../../data/content/overview.json';
 
 const OverviewSection = () => {
@@ -11,9 +11,9 @@ const OverviewSection = () => {
   };
 
   return (
-    <section id="overview" className="content-section">
+    <section className="content-section" id="overview">
       <div className="content-section-inner">
-        <h2>{overviewContent.title}</h2>
+        <h2 className="section-title">{overviewContent.title}</h2>
         <div className="program-overview">
           {overviewContent.cards.map((card, index) => (
             <div className="overview-card" key={index}>

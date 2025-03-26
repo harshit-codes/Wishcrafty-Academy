@@ -1,24 +1,23 @@
 /* Base styles for all content sections */
 .content-section {
-  min-height: 100vh;
+  padding: 100px 0 60px 0; /* Fixed padding instead of min-height */
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: var(--space-xxl) 0; /* Instead of 4rem 0 */
   position: relative;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
+  box-sizing: border-box;
+  scroll-margin-top: 120px; /* Add scroll margin for better positioning */
 }
 
 .content-section-inner {
-  max-width: 800px;
+  max-width: 1100px;
   width: 100%;
   margin: 0 auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  box-sizing: border-box;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
 }
 
 .content-section:nth-child(odd) {
@@ -58,6 +57,38 @@
   line-height: 1.8;
   color: var(--gray-text);
   margin-bottom: 1.5rem;
+}
+
+/* Add scroll margin to section headers */
+.content-section h2, 
+.section-header__title,
+.content-section-inner > h2 {
+  padding-top: 30px; /* Add extra padding at the top */
+  margin-top: -10px; /* Offset some of the padding to maintain layout */
+  scroll-margin-top: 100px; /* Additional scroll margin for direct navigation */
+  position: relative; /* Ensure the title is in its own stacking context */
+  z-index: 1; /* Give titles a higher z-index */
+}
+
+/* Ensure section headers stay visible */
+.content-section h2,
+.section-header__title {
+  margin-top: 0;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 5;
+  font-size: 2.5rem;
+  color: var(--color-text-primary);
+  text-align: center;
+}
+
+/* Fix section headers visibility */
+.content-section h2,
+.section-header__title {
+  position: relative;
+  margin-top: 0;
+  padding-top: 20px;
+  z-index: 1;
 }
 
 /* Program Overview Section */

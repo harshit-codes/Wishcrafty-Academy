@@ -41,19 +41,101 @@
 @import './animations/MagnetLines.css';
 @import './animations/RotatingText.css';
 
-/* Base styles */
-body {
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+}
+
+html, body {
+  height: 100%; /* Ensure proper document structure */
+  overflow-y: auto !important; /* Force vertical scrolling */
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--color-background-primary); /* Instead of var(--dark-bg) */
-  color: var(--color-text-primary); /* Instead of var(--light-text) */
-  font-size: var(--font-size-sm); /* Instead of 16px */
-  line-height: var(--line-height-normal); /* Instead of 1.5 */
-  padding-top: 30px; /* Add padding to account for the fixed banner */
+  background-color: var(--color-background-primary);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  padding-top: 30px; /* For the announcement banner */
+  position: relative;
+  scroll-behavior: auto !important; /* Ensure default scrolling works */
+  min-height: 100vh; /* Minimum height */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Fix spacing for fixed banner */
+body {
+  padding-top: 30px; /* Height of announcement banner */
+}
+
+/* Basic reset for commonly used elements */
+h1, h2, h3, h4, h5, h6, p, ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+}
+
+/* Section ID marker for debugging */
+section[id]::before {
+  content: '#' attr(id);
+  display: block;
+  position: absolute;
+  top: 100px;
+  left: 20px;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  padding: 5px;
+  font-size: 12px;
+  z-index: 1000;
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+/* Make section IDs visible in development but hidden in production */
+@media (min-width: 1200px) {
+  section[id]::before {
+    display: none; /* Hide in production or set to block for debugging */
+  }
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Fix announcement banner positioning and eliminate white strip */
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-background-primary);
+}
+
+/* Remove any body padding-top that creates white space */
+body {
+  margin: 0;
+  padding: 0 !important; /* Override any other padding */
+  overflow-x: hidden;
+}
+
+/* Remove any body::before pseudo-element */
+body::before {
+  display: none !important;
 }
 
 /* Global styles */
@@ -84,4 +166,46 @@ a:hover {
 .announcement-spacer {
   height: 30px; /* Height of the announcement banner */
   width: 100%;
+  display: block;
+}
+
+/* Special class to add padding after the banner */
+.banner-padding {
+  height: 30px;
+  width: 100%;
+  display: block;
+}
+
+/* Additional class to make it easier to target all sections */
+section[id] {
+  scroll-margin-top: 120px; /* Accounts for banner + navbar + extra space */
+}
+
+/* Remove problematic scroll settings */
+section {
+  scroll-margin-top: 0;
+}
+
+/* Target hero section specifically */
+#home.hero-section {
+  min-height: calc(100vh - 30px); /* Account for announcement banner */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Debugging helper - removes any elements that might block scrolling */
+body > div {
+  overflow: visible !important;
+}
+
+main {
+  overflow: visible !important;
+}
+
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }

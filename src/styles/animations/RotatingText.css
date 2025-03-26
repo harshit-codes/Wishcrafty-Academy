@@ -108,8 +108,11 @@
 .rotating-word-container {
   font-size: var(--font-size-xxxl) !important;
   font-weight: 800 !important;
-  display: flex;
+  display: inline-flex; /* Changed from flex to inline-flex */
   align-items: center;
+  white-space: nowrap;
+  overflow: visible; /* Allow long words to be visible */
+  min-width: 0; /* Allow container to shrink */
 }
 
 .rotating-word-container .char {
@@ -120,11 +123,20 @@
   .rotating-word-container {
     font-size: 2.3rem !important;
   }
+  
+  .flex.items-center.justify-center {
+    width: 100%;
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 480px) {
   .rotating-word-container {
-    font-size: 1.9rem !important;
+    font-size: 1.6rem !important; /* Reduced further for very small screens */
+  }
+  
+  .product-label {
+    font-size: 1.6rem; /* Match the rotating text size */
   }
 }
 
@@ -194,4 +206,18 @@
   .md\:pb-1 {
     padding-bottom: 0.25rem;
   }
+}
+
+/* Fix the rotating text line break issue */
+.flex.items-center.justify-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap; /* Prevent wrapping to new line */
+  white-space: nowrap; /* Keep all text on same line */
+}
+
+.product-label {
+  display: inline-block;
+  white-space: nowrap;
 }

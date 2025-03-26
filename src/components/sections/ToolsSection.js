@@ -3,7 +3,7 @@ import toolsContent from '../../data/content/tools.json';
 
 const ToolsSection = () => {
   return (
-    <section id="tools" className="content-section">
+    <section className="content-section" id="tools">
       <div className="content-section-inner">
         <h2>{toolsContent.title}</h2>
         

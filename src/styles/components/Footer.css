@@ -1,10 +1,14 @@
 .site-footer {
-  background-color: var(--darker-bg);
-  padding: var(--space-xxl) 0 var(--space-lg);
-  color: var(--gray-text);
-  width: 100%;
-  scroll-snap-align: start;
   position: relative;
+  width: 100%;
+  background-color: var(--color-background-secondary);
+  padding: var(--space-xl) 0 var(--space-lg);
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: auto; /* This is crucial - pushes footer to the bottom */
+  order: 999; /* Ensure it's always the last element */
+  color: var(--gray-text);
 }
 
 .site-footer::before {
@@ -23,11 +27,12 @@
 }
 
 .footer-container {
-  max-width: 1100px;
+  max-width: 1200px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 2rem;
-  box-sizing: border-box;
+  padding: 0 var(--space-md);
+  box-sizing: border-box; /* Ensure padding is included in the width */
+  overflow: visible; /* Allow content to be visible */
 }
 
 /* Main footer section with columns */
@@ -55,8 +60,20 @@
 .footer-tagline {
   font-size: 1rem;
   color: var(--light-text);
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   line-height: 1.5;
+}
+
+.footer-slogan {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  margin-bottom: 1.5rem;
+  font-style: italic;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .footer-social {

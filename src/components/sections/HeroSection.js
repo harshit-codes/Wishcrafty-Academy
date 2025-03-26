@@ -42,18 +42,16 @@ const HeroSection = () => {
     console.error("Error formatting date:", error);
   }
 
-  // Create announcement text with HTML for better styling
-  const announcementText = `<strong>Registration closes:</strong> ${formattedDeadlineDate} <span class="separator">•</span> <strong>Cohort kicks off:</strong> ${formattedStartDate}`;
+  // Simple announcement text
+  const announcementText = `Registration closes: ${formattedDeadlineDate} • Cohort kicks off: ${formattedStartDate}`;
 
   return (
     <>
-      {/* Move the ScrollVelocityText outside the section for better positioning */}
       <ScrollVelocityText 
         text={announcementText} 
         className="announcement-banner" 
         repeatCount={3} 
         speed={0.7}
-        html={true} /* Enable HTML parsing */
       />
       
       <section id="home" className="hero-section">
@@ -115,12 +113,11 @@ const HeroSection = () => {
             <Button 
               variant="primary" 
               className="cta-button primary"
-              href={siteConfig.cta.url || heroContent.ctaButton.url}
+              href={siteConfig.cta?.url || heroContent.ctaButton?.url || "#pricing"}
             >
-              {heroContent.ctaButton.text}
+              {heroContent.ctaButton?.text || "Join Now"}
             </Button>
           </div>
-          <div className="kickoff-note">Next cohort starts {formattedStartDate}</div>
         </div>
       </section>
     </>

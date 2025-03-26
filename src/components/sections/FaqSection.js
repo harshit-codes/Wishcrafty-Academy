@@ -6,7 +6,7 @@ import faqContent from '../../data/content/faq.json';
 
 const FaqSection = () => {
   return (
-    <section id="faq" className="content-section">
+    <section className="content-section" id="faq">
       <div className="content-section-inner">
         <SectionHeader title={faqContent.title} />
         

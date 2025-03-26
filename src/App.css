@@ -24,17 +24,18 @@
   align-items: center;
   padding: 1.2rem 1.5rem;
   position: relative;
-  max-width: 600px;
+  max-width: 1000px; /* Increased width from 600px */
   width: 100%;
   box-sizing: border-box;
   background: none;
   border: none;
   box-shadow: none;
-  transition: padding 0.3s ease;
+  transition: max-width 0.3s ease, padding 0.3s ease;
 }
 
 .navbar.scrolled {
   padding: 0.8rem 1.5rem;
+  max-width: 900px; /* Shrink a bit when scrolled */
 }
 
 /* Navbar wrapper to allow for centered navbar with full-width background */
@@ -744,12 +745,13 @@ footer {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  max-width: 600px;
+  max-width: 1000px; /* Increased width from 600px */
   padding: 0;
   background: none;
   box-shadow: none;
   border: none;
   box-sizing: border-box;
+  transition: max-width 0.3s ease, padding 0.3s ease;
 }
 
 .navbar-content {
@@ -764,6 +766,15 @@ footer {
   align-items: center;
   padding: 0.8rem 1.5rem;
   transition: all 0.3s ease;
+  flex: 2;
+  text-align: left;
+  padding-left: 1.5rem;
+  height: 50px; /* Reduced height from 60px */
+}
+
+.navbar.scrolled .navbar-primary {
+  height: 45px; /* Further reduce height when scrolled */
+  padding: 0.6rem 1.5rem;
 }
 
 .navbar.scrolled .navbar-primary {
@@ -783,15 +794,17 @@ footer {
 }
 
 .section-title {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 500;
-  color: var(--light-text);
-  opacity: 0.95;
+  color: rgba(255, 255, 255, 0.95);
   transition: all 0.3s ease;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 220px;
+  text-align: left;
+  max-width: 350px; /* Increased from 180px */
+  text-transform: capitalize;
+}
+
+.navbar.scrolled .section-title {
+  font-size: 1.1rem;
 }
 
 .navbar-sections {
@@ -868,43 +881,29 @@ footer {
 
 /* Desktop styles */
 @media (min-width: 769px) {
-  .navbar-primary {
-    padding: 1rem 1.5rem;
-  }
-  
-  .navbar.scrolled .navbar-primary {
-    padding: 0.8rem 1.5rem;
-  }
-  
-  .navbar-sections {
-    max-height: none;
-    opacity: 1;
-    border-top: none;
-    margin-left: auto;
-  }
-  
   .navbar-content {
     flex-direction: row;
     align-items: center;
-    padding: 0 1.5rem;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
+  
+  .navbar-primary {
+    width: auto;
+    justify-content: flex-start;
+    flex: 3;
+  }
+  
+  .navbar-sections {
+    width: auto;
+    flex: 2;
+    border-top: none;
+    display: flex;
+    justify-content: flex-end;
   }
   
   .section-icons {
-    padding: 0;
-  }
-  
-  .section-icons li {
-    margin: 0 1rem;
-  }
-  
-  .section-icon-btn {
-    flex-direction: row;
-    padding: 0.5rem 0.7rem;
-  }
-  
-  .section-icon-btn svg {
-    margin-bottom: 0;
-    margin-right: 0.5rem;
+    padding: 0 0.5rem;
   }
   
   .menu-toggle {
@@ -948,12 +947,13 @@ footer {
 .navbar {
   display: flex;
   width: 100%;
-  max-width: 600px;
+  max-width: 1000px; /* Increased width from 600px */
   padding: 0;
   background: none;
   box-shadow: none;
   border: none;
   box-sizing: border-box;
+  transition: max-width 0.3s ease, padding 0.3s ease;
 }
 
 .navbar-content {
@@ -970,15 +970,29 @@ footer {
   padding: 1rem 1.5rem;
   width: 100%;
   transition: all 0.4s ease;
+  flex: 2;
+  text-align: left;
+  padding-left: 1.5rem;
+  height: 50px; /* Reduced height from 60px */
+}
+
+.navbar.scrolled .navbar-primary {
+  height: 45px; /* Further reduce height when scrolled */
+  padding: 0.6rem 1.5rem;
 }
 
 .section-title {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 500;
-  color: var(--light-text);
+  color: rgba(255, 255, 255, 0.95);
   transition: all 0.3s ease;
-  text-align: center;
-  opacity: 0.95;
+  text-align: left;
+  max-width: 350px; /* Increased from 180px */
+  text-transform: capitalize;
+}
+
+.navbar.scrolled .section-title {
+  font-size: 1.1rem;
 }
 
 /* Section Icons Bar */
@@ -1182,12 +1196,13 @@ footer {
 .navbar {
   display: flex;
   width: 100%;
-  max-width: 600px;
+  max-width: 1000px; /* Increased width from 600px */
   padding: 0;
   background: none;
   box-shadow: none;
   border: none;
   box-sizing: border-box;
+  transition: max-width 0.3s ease, padding 0.3s ease;
 }
 
 .navbar-content {
@@ -1207,6 +1222,15 @@ footer {
   transition: all 0.4s ease;
   position: relative; /* For absolute positioning of logo */
   min-height: 3.5rem; /* Ensure consistent height */
+  flex: 2;
+  text-align: left;
+  padding-left: 1.5rem;
+  height: 50px; /* Reduced height from 60px */
+}
+
+.navbar.scrolled .navbar-primary {
+  height: 45px; /* Further reduce height when scrolled */
+  padding: 0.6rem 1.5rem;
 }
 
 /* Adjust logo to prevent overlap with title */
@@ -1229,18 +1253,17 @@ footer {
 
 /* Fix title styling and visibility */
 .section-title {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 500;
-  color: var(--light-text);
+  color: rgba(255, 255, 255, 0.95);
   transition: all 0.3s ease;
-  text-align: center;
-  opacity: 0.95;
-  padding: 0; /* Remove padding that was avoiding logo */
-  margin: 0 auto;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 80%; /* Increase max-width since no logo to avoid */
+  text-align: left;
+  max-width: 350px; /* Increased from 180px */
+  text-transform: capitalize;
+}
+
+.navbar.scrolled .section-title {
+  font-size: 1.1rem;
 }
 
 /* Fix icon centering and remove glass effect */
@@ -1291,20 +1314,17 @@ footer {
 
 /* Ensure section title is centered properly */
 .section-title {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--light-text);
-  letter-spacing: 0.02em;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.95);
   transition: all 0.3s ease;
-  text-align: center;
-  opacity: 0.95;
-  padding: 0 0.5rem;
-  margin: 0 auto; /* Center the title regardless of logo */
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.8));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  text-align: left;
+  max-width: 350px; /* Increased from 180px */
+  text-transform: capitalize;
+}
+
+.navbar.scrolled .section-title {
+  font-size: 1.1rem;
 }
 
 /* Make section icons always visible with proper styling */
@@ -1513,12 +1533,13 @@ footer {
 .navbar {
   display: flex;
   width: 100%;
-  max-width: 600px;
+  max-width: 1000px; /* Increased width from 600px */
   padding: 0;
   background: none;
   box-shadow: none;
   border: none;
   box-sizing: border-box;
+  transition: max-width 0.3s ease, padding 0.3s ease;
 }
 
 .navbar-content {
@@ -1538,42 +1559,30 @@ footer {
   padding: 0.8rem 1rem;
   height: 60px; /* Fixed height */
   box-sizing: border-box;
+  flex: 2;
+  text-align: left;
+  padding-left: 1.5rem;
+  height: 50px; /* Reduced height from 60px */
 }
 
-/* Logo positioning */
-/*
-.navbar-logo {
-  position: absolute;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 24px;
-  display: flex;
-  align-items: center;
+.navbar.scrolled .navbar-primary {
+  height: 45px; /* Further reduce height when scrolled */
+  padding: 0.6rem 1.5rem;
 }
-
-.navbar-logo img {
-  height: 24px;
-  width: auto;
-}
-*/
 
 /* Title styling */
 .section-title {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 180px; /* Limit width for better fit */
-  margin: 0 auto; /* Center the title */
-  padding: 0;
-  background: none;
-  /* Remove any gradient or clip effects */
-  -webkit-text-fill-color: inherit;
-  text-shadow: none;
+  color: rgba(255, 255, 255, 0.95);
+  transition: all 0.3s ease;
+  text-align: left;
+  max-width: 350px; /* Increased from 180px */
+  text-transform: capitalize;
+}
+
+.navbar.scrolled .section-title {
+  font-size: 1.1rem;
 }
 
 /* Icons section */
@@ -1693,4 +1702,23 @@ footer {
   .section-icons {
     padding: 0.3rem 0;
   }
+}
+
+/* Active section highlight enhancements */
+.navbar-links li.active .nav-link {
+  color: var(--color-primary, #4a90e2);
+  position: relative;
+  transform: translateY(-2px);
+}
+
+.navbar-links li.active .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-primary, #4a90e2);
+  border-radius: 50%;
 }

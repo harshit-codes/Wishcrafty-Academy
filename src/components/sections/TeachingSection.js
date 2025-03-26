@@ -10,7 +10,7 @@ const TeachingSection = () => {
   const tracks = teachingContent?.tracks || { title: "Two Parallel Tracks", tracksList: [] };
 
   return (
-    <section id="teaching" className="content-section">
+    <section className="content-section" id="teaching">
       <div className="content-section-inner">
         <SectionHeader title={teachingContent?.title || "Teaching Methodology"} />
         

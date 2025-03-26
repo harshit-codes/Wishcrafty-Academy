@@ -1,6 +1,7 @@
 {
   "siteName": "WishCrafty Academy",
-  "siteDescription": "Learn to build products in 2 weeks using AI + No-Code",
+  "siteDescription": "Learn to build and manage products in 2 weeks using AI + No-Code",
+  "siteTagline": "Learn, Build, Grow",
   "contact": {
     "email": "hellowishcrafty@gmail.com",
     "calendly": "https://calendly.com/wishcrafty/intro",
@@ -38,19 +39,19 @@
   "pricing": {
     "tiers": [
       {
-        "date": "2025-03-26T23:59:59+05:30",
+        "date": "2025-03-27T11:59:59+05:30",
         "price": "₹879",
+        "label": "Super Early Bird"
+      },
+      {
+        "date": "2025-03-28T11:59:59+05:30", 
+        "price": "₹1,179",
         "label": "Early Bird"
       },
       {
-        "date": "2025-03-27T23:59:59+05:30", 
-        "price": "₹1,179",
-        "label": "Regular"
-      },
-      {
-        "date": "2025-03-28T23:59:59+05:30",
+        "date": "2025-03-29T11:59:59+05:30",
         "price": "₹1,679",
-        "label": "Last Minute"
+        "label": "Regular"
       }
     ],
     "hasScholarships": true
@@ -68,5 +69,16 @@
     "primary": "Join the Cohort Today",
     "secondary": "View Curriculum",
     "url": "https://rzp.io/rzp/wcs-cohort"
+  },
+  "meta": {
+    "title": "WishCrafty Academy",
+    "description": "Learn to build and manage products in 2 weeks using AI + No-Code",
+    "keywords": "product management, no-code, AI, product development, learning cohort, wishcrafty",
+    "author": "Harshit Choudhary",
+    "ogTitle": "WishCrafty Academy - Learn, Build, Grow",
+    "ogDescription": "Learn to build and manage products in 2 weeks using AI + No-Code",
+    "ogImage": "/images/og-image.jpg",
+    "twitterCard": "summary_large_image",
+    "twitterCreator": "@harshitchoudhary"
   }
 }

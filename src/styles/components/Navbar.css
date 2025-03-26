@@ -1,17 +1,16 @@
-/* Navbar structure */
+/* Navbar styling */
 .navbar-wrapper {
   position: fixed;
-  top: 0;
+  top: 30px; /* Exact height of announcement banner */
   left: 0;
   right: 0;
-  background: rgba(18, 18, 18, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
+  z-index: 1500; /* Lower z-index than announcement banner */
   transition: all 0.3s ease;
+  pointer-events: none; /* Allow clicks to pass through the wrapper */
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
 }
 
 .navbar-wrapper.scrolled {
@@ -20,52 +19,38 @@
 }
 
 .navbar {
-  display: flex;
-  width: 100%;
-  max-width: 600px;
-  padding: 0;
-  background: none;
-  box-shadow: none;
-  border: none;
-  box-sizing: border-box;
-  transition: var(--transition-medium); /* Instead of all 0.3s ease */
+  background-color: rgba(30, 30, 30, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  max-width: 98%;
+  width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  pointer-events: auto; /* Restore pointer events for the navbar itself */
 }
 
 .navbar-content {
   display: flex;
-  flex-direction: column; /* Change to column layout */
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  width: 100%;
+  padding: 0.8rem 1.5rem;
 }
 
-/* Title area - enhanced styling */
 .navbar-primary {
-  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 1rem 1rem 0.7rem; /* Increased padding */
-  box-sizing: border-box;
-  background: linear-gradient(180deg, rgba(30, 30, 30, 0.2) 0%, transparent 100%); /* Subtle gradient background */
 }
 
 .section-title {
-  font-size: var(--font-size-lg); /* Instead of 1.4rem */
-  font-weight: var(--font-weight-semibold); /* Instead of 600 */
-  letter-spacing: 0.05em; /* Add letter spacing */
-  color: rgba(255, 255, 255, 0.95);
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 80%;
-  margin: 0 auto;
-  padding: 0;
-  position: relative;
-  opacity: 1;
-  transition: var(--transition-medium); /* Instead of opacity 0.3s ease */
+  font-size: 1.5rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: opacity 0.3s ease;
 }
 
 /* New flowing gradient animation based on the reference */
@@ -96,11 +81,13 @@
 
 /* Smooth title transitions */
 .section-title.title-fade-out {
-  opacity: 0.3;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .section-title.title-fade-in {
   opacity: 1;
+  transition: opacity 0.3s ease;
 }
 
 @keyframes shineEffect {
@@ -131,107 +118,109 @@
   width: 30px; /* Smaller indicator when scrolled */
 }
 
-/* Icons section */
+/* Section icons */
 .navbar-sections {
-  width: 100%;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
 .section-icons {
   display: flex;
-  flex-direction: row;
-  justify-content: center; /* Center the icons */
-  align-items: center;
-  flex-wrap: nowrap;
-  padding: 0.5rem 0;
-  list-style-type: none;
+  list-style: none;
   margin: 0;
-  width: auto;
+  padding: 0;
+  gap: 0.5rem;
 }
 
 .section-icons li {
-  margin: 0 0.8rem; /* Add equal margin on both sides */
-  opacity: 0.7;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  position: relative;
+  transition: all 0.2s ease;
 }
 
-.section-icons li.active {
-  opacity: 1;
-}
-
-.section-icons li.inactive {
-  transform: scale(0.8);
-  opacity: 0.3;
-}
-
-/* Icon styling */
 .section-icon-btn {
   background: none;
   border: none;
+  padding: 0.6rem;
   cursor: pointer;
-  padding: var(--space-xxs); /* Instead of 0.5rem */
-  color: var(--light-text);
+  color: var(--gray-text);
+  border-radius: 8px;
+  transition: all 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
-  position: relative;
 }
 
-.section-icon-btn:hover {
-  color: var(--secondary-color);
-}
-
+.section-icon-btn:hover, 
 .section-icons li.active .section-icon-btn {
-  color: var(--secondary-color);
+  color: var(--light-text);
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .icon-container {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  background: none;
-  box-shadow: none;
-  border: none;
-  transition: transform 0.2s ease;
 }
 
-.section-label {
-  display: none;
+/* Make sure to handle active section styling */
+.section-icons li.active .section-icon-btn {
+  background-color: rgba(157, 78, 221, 0.1);
+  color: var(--primary-color);
 }
 
-/* Remove or comment out the icon-shine related styles */
-.icon-shine {
-  display: none; /* Hide the shine element entirely */
+/* Animation classes */
+.title-fade-in {
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
 
-/* Mobile adjustments */
-@media (max-width: 480px) {
-  .section-title {
-    font-size: 1.1rem;
-    letter-spacing: 0.03em;
+.title-fade-out {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Scrolled state styling */
+.navbar-wrapper.scrolled .navbar {
+  padding: 0.5rem 0;
+  border-radius: 0;
+  width: 100%;
+  max-width: 100%;
+  background-color: rgba(18, 18, 18, 0.95);
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .navbar-content {
+    padding: 0.6rem 1rem;
   }
   
-  .icon-container {
-    width: 20px;
-    height: 20px;
+  .section-title {
+    font-size: 1.3rem;
   }
   
   .section-icon-btn {
-    padding: 0.3rem;
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-wrapper {
+    top: 30px; /* Keep below announcement banner */
+  }
+  
+  .navbar-content {
+    padding: 0.5rem 0.8rem;
+  }
+  
+  .section-title {
+    font-size: 1.1rem;
   }
   
   .section-icons {
-    padding: 0.3rem 0;
+    gap: 0.2rem;
   }
   
-  .section-icons li {
-    margin: 0 0.5rem; /* Smaller margins on mobile */
+  .section-icon-btn {
+    padding: 0.4rem;
   }
 }
