@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import PricingCard from '../ui/PricingCard';
+import Countdown from '../ui/Countdown';
+import Timeline from '../ui/Timeline';
+import siteConfig from '../../data/siteConfig.json';
 
 const PricingSection = () => {
-  // Target dates for price changes
-  const targetDates = [
-    new Date('2025-03-26T23:49:00+05:30'), // March 26, 2025, 11:49 PM IST
-    new Date('2025-03-27T23:59:59+05:30'), // March 27, 2025, 11:59 PM IST
-    new Date('2025-03-28T23:59:59+05:30')  // March 28, 2025, 11:59 PM IST
-  ];
+  // Get pricing data from siteConfig
+  const pricingTiers = siteConfig.pricing.tiers;
   
-  const prices = ['₹879', '₹1,179', '₹1,679'];
+  // Target dates for price changes
+  const targetDates = pricingTiers.map(tier => new Date(tier.date));
+  const prices = pricingTiers.map(tier => tier.price);
   
   const [currentPrice, setCurrentPrice] = useState(prices[0]);
   const [nextPrice, setNextPrice] = useState(prices[1]);
@@ -89,71 +91,59 @@ const PricingSection = () => {
     return time < 10 ? `0${time}` : time;
   };
 
+  // Prepare countdown component for the pricing card
+  const countdownComponent = (
+    <Countdown 
+      label="Current price valid until:"
+      dateText={deadlineText}
+      timeLeft={timeLeft}
+      fallbackLabel="Final price"
+      formatTime={formatTime}
+    />
+  );
+
+  // Prepare timeline items from pricing tiers
+  const timelineItems = pricingTiers.map(tier => ({
+    date: `Until ${new Date(tier.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`,
+    content: tier.price
+  }));
+
   return (
     <section id="pricing" className="content-section">
       <div className="content-section-inner">
         <h2>Program Fee</h2>
         
         <div className="pricing-container single-tier">
-          <div className="pricing-card highlight">
-            <div className="pricing-badge">Limited Time Offer</div>
-            <h3>Cohort Registration</h3>
-            <div className="pricing-price">{currentPrice}</div>
-            {nextPrice && <div className="pricing-next">Price increases to {nextPrice} after deadline</div>}
-            <ul className="pricing-features">
-              <li>Full 2-week program access</li>
-              <li>All learning materials</li>
-              <li>Project feedback & review</li>
-              <li>Cohort community access</li>
-              <li>Certificate of completion</li>
-            </ul>
-            <div className="pricing-cta">
-              {timeLeft.days > 0 || timeLeft.hours > 0 || timeLeft.minutes > 0 || timeLeft.seconds > 0 ? (
-                <div className="countdown">
-                  <span className="countdown-label">Current price valid until:</span>
-                  <span className="countdown-date">{deadlineText}</span>
-                  <span className="countdown-timer">
-                    {`${formatTime(timeLeft.days)}:${formatTime(timeLeft.hours)}:${formatTime(timeLeft.minutes)}:${formatTime(timeLeft.seconds)}`}
-                  </span>
-                </div>
-              ) : (
-                <div className="countdown">
-                  <span className="countdown-label">Final price</span>
-                </div>
-              )}
-              <button className="cta-button primary">Secure Your Spot</button>
-            </div>
-          </div>
+          <PricingCard
+            title="Cohort Registration"
+            price={currentPrice}
+            nextPrice={nextPrice}
+            badge="Limited Time Offer"
+            highlight={true}
+            features={[
+              `Full ${siteConfig.cohort.duration} program access`,
+              "All learning materials",
+              "Project feedback & review",
+              "Cohort community access",
+              "Certificate of completion"
+            ]}
+            countdownComponent={countdownComponent}
+            ctaText={siteConfig.cta.primary}
+            ctaUrl={siteConfig.cta.url}
+          />
         </div>
         
-        <div className="pricing-timeline">
-          <div className="timeline-item">
-            <div className="timeline-date">Until Mar 26</div>
-            <div className="timeline-price">{prices[0]}</div>
-          </div>
-          <div className="timeline-divider"></div>
-          <div className="timeline-item">
-            <div className="timeline-date">Until Mar 27</div>
-            <div className="timeline-price">{prices[1]}</div>
-          </div>
-          <div className="timeline-divider"></div>
-          <div className="timeline-item">
-            <div className="timeline-date">Until Mar 28</div>
-            <div className="timeline-price">{prices[2]}</div>
-          </div>
-        </div>
+        <Timeline 
+          items={timelineItems}
+          direction="horizontal"
+          className="pricing-timeline"
+        />
         
-        <div className="pricing-note">
-          <p><span className="highlight">Inclusivity Note:</span> We believe in making education accessible to everyone. Disadvantaged individuals, including students from underprivileged backgrounds, may qualify for significant discounts. <a href="#" className="contact-link">Contact us</a> to learn more about our scholarship opportunities.</p>
-        </div>
-        
-        <div className="payment-methods">
-          <p>Flexible payment options available</p>
-          <div className="payment-icons">
-            <span className="payment-icon">💳</span>
-            <span className="payment-icon">🏦</span>
+        {siteConfig.pricing.hasScholarships && (
+          <div className="pricing-note">
+            <p><span className="highlight">Inclusivity Note:</span> We believe in making education accessible to everyone. Disadvantaged individuals, including students from underprivileged backgrounds, may qualify for significant discounts.</p>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );

@@ -6,7 +6,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 4rem 0;
+  padding: var(--space-xxl) 0; /* Instead of 4rem 0 */
   position: relative;
   scroll-snap-align: start;
   scroll-snap-stop: always;
@@ -26,8 +26,8 @@
 }
 
 .content-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 3rem;
+  font-size: var(--font-size-xxl); /* Instead of 2.5rem */
+  margin-bottom: var(--space-xl); /* Instead of 3rem */
   color: var(--primary-color);
   position: relative;
   display: inline-block;
@@ -39,17 +39,17 @@
   position: absolute;
   width: 60px;
   height: 4px;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  background: var(--gradient-primary); /* Instead of linear-gradient(...) */
   bottom: -12px;
   left: 50%;
   transform: translateX(-50%);
-  border-radius: 2px;
+  border-radius: var(--radius-sm); /* Instead of 2px */
 }
 
 .content-section h3 {
-  font-size: 1.6rem;
+  font-size: var(--font-size-xl); /* Instead of 1.6rem */
   color: var(--light-text);
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-md); /* Instead of 1.5rem */
   font-weight: 600;
 }
 
@@ -69,11 +69,11 @@
 }
 
 .overview-card {
-  background: rgba(40, 40, 40, 0.5);
-  border-radius: 12px;
-  padding: 2rem;
+  background: var(--color-surface); /* Instead of rgba(40, 40, 40, 0.5) */
+  border-radius: var(--radius-lg); /* Instead of 12px */
+  padding: var(--space-lg); /* Instead of 2rem */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border-primary); /* Instead of rgba(255, 255, 255, 0.05) */
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -81,13 +81,13 @@
 
 .overview-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-lg); /* Instead of 0 10px 20px rgba(0, 0, 0, 0.2) */
   border-color: rgba(var(--primary-color-rgb), 0.2);
 }
 
 .card-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1.2rem;
+  font-size: var(--font-size-xxl); /* Instead of 2.5rem */
+  margin-bottom: var(--space-md); /* Instead of 1.2rem */
 }
 
 .overview-card h3 {
@@ -107,8 +107,8 @@
 .methodology-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-bottom: 3rem;
+  gap: var(--space-lg); /* Instead of 2rem */
+  margin-bottom: var(--space-xl); /* Instead of 3rem */
 }
 
 .methodology-card {

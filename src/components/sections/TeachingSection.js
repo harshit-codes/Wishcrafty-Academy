@@ -1,60 +1,67 @@
 import React from 'react';
+import Card from '../ui/Card';
+import SectionHeader from '../ui/SectionHeader';
+import teachingContent from '../../data/content/teaching.json';
 
 const TeachingSection = () => {
+  // Add null checks to avoid "Cannot read properties of undefined" errors
+  const methodologies = teachingContent?.methodologies || [];
+  const sessionFlow = teachingContent?.sessionFlow || { title: "Daily Session Flow", steps: [] };
+  const tracks = teachingContent?.tracks || { title: "Two Parallel Tracks", tracksList: [] };
+
   return (
     <section id="teaching" className="content-section">
       <div className="content-section-inner">
-        <h2>Teaching Methodology</h2>
+        <SectionHeader title={teachingContent?.title || "Teaching Methodology"} />
+        
         <div className="methodology-cards">
-          <div className="methodology-card">
-            <div className="card-icon-large">🛠️</div>
-            <h3>Project-Based Learning</h3>
-            <p>Follow the 7P model: Phenomenon, Problem, Plan, Prototype, Product, Presentation, Price to develop critical skills.</p>
-          </div>
-          <div className="methodology-card">
-            <div className="card-icon-large">👥</div>
-            <h3>Cohort Accountability</h3>
-            <p>Shared start/end dates, peer-to-peer accountability, and structured progress tracking to improve outcomes.</p>
-          </div>
-          <div className="methodology-card">
-            <div className="card-icon-large">📈</div>
-            <h3>Progressive Skill Building</h3>
-            <p>From foundational concepts to launch preparation, supporting different learning speeds.</p>
-          </div>
-          <div className="methodology-card">
-            <div className="card-icon-large">🔄</div>
-            <h3>Reverse Learning</h3>
-            <p>Study materials are provided before sessions, allowing class time to focus on reflection, deeper discussion, and practical application rather than basic information transfer.</p>
-          </div>
+          {methodologies.map((method, index) => (
+            <Card 
+              key={index}
+              icon={<div className="card-icon-large">{method.icon}</div>}
+              title={method.title}
+              description={method.description}
+            />
+          ))}
         </div>
         
-        <div className="curriculum-tracks">
-          <h3 className="track-header">Two Parallel Tracks</h3>
-          <div className="tracks-container">
-            <div className="track">
-              <h4>Product Development Track</h4>
-              <ul className="track-list">
-                <li>No-Code Landscape</li>
-                <li>UI Design</li>
-                <li>Database Design</li>
-                <li>Workflow Automation</li>
-                <li>AI Coding Tools</li>
-                <li>Prompt Engineering</li>
-              </ul>
-            </div>
-            <div className="track">
-              <h4>Product Management Track</h4>
-              <ul className="track-list">
-                <li>Product Discovery</li>
-                <li>User Research</li>
-                <li>Value Proposition Design</li>
-                <li>Data Strategy</li>
-                <li>UX Optimization</li>
-                <li>Go-to-Market Strategy</li>
-              </ul>
+        {sessionFlow.steps && sessionFlow.steps.length > 0 && (
+          <div className="session-flow">
+            <h3 className="session-flow-header">{sessionFlow.title}</h3>
+            <div className="session-flow-diagram">
+              {sessionFlow.steps.map((step, index) => (
+                <div className="session-flow-step" key={index}>
+                  <div className="step-icon">{step.icon}</div>
+                  <div className="step-content">
+                    <h4 className="step-title">{step.title}</h4>
+                    <p className="step-description">{step.description}</p>
+                  </div>
+                  {index < sessionFlow.steps.length - 1 && (
+                    <div className="step-arrow">→</div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
-        </div>
+        )}
+        
+        {tracks.tracksList && tracks.tracksList.length > 0 && (
+          <div className="curriculum-tracks">
+            <h3 className="track-header">{tracks.title}</h3>
+            <div className="tracks-container">
+              {tracks.tracksList.map((track, index) => (
+                <div className="track" key={index}>
+                  <h4>{track.title}</h4>
+                  <ul className="track-list">
+                    {track.skills.map((skill, idx) => (
+                      <li key={idx}>{skill}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

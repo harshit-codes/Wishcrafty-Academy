@@ -1,0 +1,36 @@
+{
+  "rotatingWords": [
+    "Ideation",
+    "Validation",
+    "Prototyping",
+    "Development",
+    "Testing",
+    "Launch",
+    "Growth",
+    "Scaling",
+    "Iteration",
+    "Innovation",
+    "User Research",
+    "Market Analysis",
+    "MVP",
+    "Product-Market Fit",
+    "User Experience",
+    "Agile",
+    "Sprint Planning",
+    "Feature Prioritization",
+    "A/B Testing",
+    "Metrics",
+    "Customer Feedback",
+    "Pivot",
+    "Roadmapping",
+    "Go-to-Market",
+    "Product Strategy"
+  ]
+  ,
+  "title": "Learn to build products in 2 weeks using AI + No-Code",
+  "description": "Empower yourself to create functional products without writing code. Our cohort-based program bridges product strategy with AI-powered implementation.",
+  "ctaButton": {
+    "text": "Join the Cohort Today",
+    "url": "#pricing"
+  }
+}

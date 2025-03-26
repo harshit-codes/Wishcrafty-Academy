@@ -1,0 +1,50 @@
+/* Section Component */
+.section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xxl) 0;
+  position: relative;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.section--full-height {
+  min-height: 100vh;
+}
+
+.section__inner {
+  max-width: var(--container-md);
+  width: 100%;
+  margin: 0 auto;
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
+  box-sizing: border-box;
+}
+
+/* Background variations */
+.section--bg-alternate {
+  background-color: var(--color-background-secondary);
+}
+
+.section--bg-gradient {
+  background: var(--gradient-background);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .section {
+    padding: var(--space-xl) 0;
+  }
+  
+  .section--full-height {
+    min-height: auto; /* On mobile, don't enforce full height */
+  }
+  
+  .section__inner {
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "title": "Frequently Asked Questions",
+  "items": [
+    {
+      "question": "Who is this program for?",
+      "answer": "This program is designed for non-technical individuals who want to build functional products without traditional coding knowledge. It's perfect for aspiring product managers, entrepreneurs, and professionals looking to add technical skills."
+    },
+    {
+      "question": "Do I need any coding experience?",
+      "answer": "No prior coding experience is required. We've designed the curriculum to be accessible to complete beginners while still being valuable to those with some technical background."
+    },
+    {
+      "question": "How much time commitment is required?",
+      "answer": "The program requires approximately 20-25 hours per week for two weeks. This includes live sessions, self-paced learning, and project work."
+    },
+    {
+      "question": "What will I have built by the end?",
+      "answer": "By the end of the program, you will have built a functional product that demonstrates both your product thinking and implementation skills. This could be a web app, a mobile app prototype, or another digital product."
+    }
+  ],
+  "testimonials": {
+    "title": "What Our Alumni Say",
+    "items": [
+      {
+        "text": "The AI-powered approach to product building at WishCrafty Academy helped me bridge the gap between product vision and implementation. I could finally create without depending on engineers for every small change.",
+        "author": "Utkarsh Srivastava",
+        "role": "Product @ HiLabs",
+        "linkedin": "https://www.linkedin.com/in/utkarsh-srivastava-276812194/"
+      },
+      {
+        "text": "As someone with limited technical background, the no-code + AI curriculum gave me exactly what I needed - practical skills to transform ideas into functional products within days rather than months.",
+        "author": "Kshitij Singh",
+        "role": "Product @ Attentive",
+        "linkedin": "https://www.linkedin.com/in/kas-kshitij/"
+      },
+      {
+        "text": "The program's emphasis on both product thinking and hands-on building set it apart. I left with not just theoretical knowledge but a working product I built myself using the latest AI tools.",
+        "author": "Dhivyaa M",
+        "role": "Product @ Flipkart",
+        "linkedin": "https://www.linkedin.com/in/dhivyaa-m-9a9671190/"
+      },
+      {
+        "text": "WishCrafty Academy's cohort approach created accountability that helped me finish what I started. The combination of community support and cutting-edge tools accelerated my learning journey.",
+        "author": "Anmol Goyal",
+        "role": "Product @ Wayo",
+        "linkedin": "https://www.linkedin.com/in/anmol-goyal-iitbhu/"
+      }
+    ]
+  }
+}

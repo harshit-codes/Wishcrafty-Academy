@@ -1,0 +1,49 @@
+{
+  "title": "Tools & Technologies",
+  "sections": [
+    {
+      "title": "No-Code Platforms",
+      "tools": [
+        {
+          "name": "Glide",
+          "description": "Build web apps with databases directly from spreadsheets without coding."
+        },
+        {
+          "name": "Airtable",
+          "description": "Create powerful databases with an intuitive spreadsheet interface."
+        },
+        {
+          "name": "Zapier",
+          "description": "Connect apps and automate workflows without complex integrations."
+        },
+        {
+          "name": "ClickUp",
+          "description": "All-in-one productivity platform for task management, docs, and project tracking."
+        },
+        {
+          "name": "Coming Soon",
+          "description": "We regularly update our curriculum with the latest no-code tools. New additions will be announced soon.",
+          "special": "iridescent"
+        }
+      ]
+    },
+    {
+      "title": "AI Coding Assistants",
+      "tools": [
+        {
+          "name": "GitHub Copilot",
+          "description": "Advanced code completion and generation based on natural language prompts."
+        },
+        {
+          "name": "Perplexity",
+          "description": "Versatile AI for explaining technical concepts and solving problems."
+        },
+        {
+          "name": "Coming Soon",
+          "description": "Our AI curriculum is constantly evolving to incorporate cutting-edge tools as they become available.",
+          "special": "iridescent"
+        }
+      ]
+    }
+  ]
+}

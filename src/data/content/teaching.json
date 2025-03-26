@@ -1,0 +1,72 @@
+{
+  "title": "Teaching Methodology",
+  "methodologies": [
+    {
+      "icon": "🛠️",
+      "title": "Project-Based Learning",
+      "description": "Follow the 7P model: Phenomenon, Problem, Plan, Prototype, Product, Presentation, Price to develop critical skills."
+    },
+    {
+      "icon": "👥",
+      "title": "Cohort Accountability",
+      "description": "Shared start/end dates, peer-to-peer accountability, and structured progress tracking to improve outcomes."
+    },
+    {
+      "icon": "📈",
+      "title": "Progressive Skill Building",
+      "description": "From foundational concepts to launch preparation, supporting different learning speeds."
+    },
+    {
+      "icon": "🔄",
+      "title": "Reverse Learning",
+      "description": "Study materials are provided before sessions, allowing class time to focus on reflection, deeper discussion, and practical application."
+    }
+  ],
+  "sessionFlow": {
+    "title": "Daily Session Flow",
+    "steps": [
+      {
+        "title": "Learning Materials",
+        "description": "Students receive comprehensive learning materials at the start of each day, including tutorials, examples, and reference guides.",
+        "icon": "📚"
+      },
+      {
+        "title": "Applied Practice",
+        "description": "Students apply the concepts to their individual projects with access to instructor assistance and real-time guidance.",
+        "icon": "💻"
+      },
+      {
+        "title": "Guided Peer Discussion",
+        "description": "Sessions end with facilitated group discussions where participants share challenges, solutions, and insights from their day's progress.",
+        "icon": "🔄"
+      }
+    ]
+  },
+  "tracks": {
+    "title": "Two Parallel Tracks",
+    "tracksList": [
+      {
+        "title": "Product Development Track",
+        "skills": [
+          "No-Code Landscape",
+          "UI Design",
+          "Database Design",
+          "Workflow Automation",
+          "AI Coding Tools",
+          "Prompt Engineering"
+        ]
+      },
+      {
+        "title": "Product Management Track",
+        "skills": [
+          "Product Discovery",
+          "User Research",
+          "Value Proposition Design",
+          "Data Strategy",
+          "UX Optimization",
+          "Go-to-Market Strategy"
+        ]
+      }
+    ]
+  }
+}

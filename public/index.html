@@ -3,17 +3,43 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#8A2BE2" />
-    <meta name="description" content="WishCrafty Academy - A transformative learning cohort" />
+    <meta name="theme-color" content="#121212" />
+    <meta
+      name="description"
+      content="WishCrafty Academy - Learn to build products in 2 weeks using AI + No-Code"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>WishCrafty Academy</title>
+    <!-- Add this script to /Users/harshitchoudhary/Documents/Wishcrafty Academy LP/public/index.html inside the <head> tag -->
+    <script type="text/javascript">
+      // Handle multiple domains - check if on GitHub Pages
+      const isGitHubPages = window.location.hostname === 'harshit-codes.github.io';
+      
+      // Single Page Apps for GitHub Pages
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+        
+        // Add canonical link for SEO
+        const link = document.createElement('link');
+        link.rel = 'canonical';
+        link.href = 'https://academy.wishcrafty.studio' + l.pathname;
+        document.head.appendChild(link);
+      }(window.location))
+    </script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>You need to enable JavaScript to run this application.</noscript>
     <div id="root"></div>
   </body>
 </html>

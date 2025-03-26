@@ -1,0 +1,72 @@
+{
+  "siteName": "WishCrafty Academy",
+  "siteDescription": "Learn to build products in 2 weeks using AI + No-Code",
+  "contact": {
+    "email": "hellowishcrafty@gmail.com",
+    "calendly": "https://calendly.com/wishcrafty/intro",
+    "supportEmail": "hellowishcrafty@gmail.com",
+    "whatsapp": "8826986083",
+    "whatsappMessage": "Hello! I'm interested in WishCrafty Academy program and would like to know more."
+  },
+  "social": {
+    "linkedin": {
+      "url": "https://linkedin.com/in/harshitchoudhary",
+      "displayName": "LinkedIn",
+      "username": "@harshitchoudhary",
+      "active": true
+    },
+    "instagram": {
+      "url": "https://instagram.com/wishcrafty.studio",
+      "displayName": "Instagram",
+      "username": "@wishcrafty.studio",
+      "active": false
+    },
+    "youtube": {
+      "url": "https://youtube.com/@wishcrafty",
+      "displayName": "YouTube",
+      "username": "@wishcrafty",
+      "active": false
+    }
+  },
+  "cohort": {
+    "nextStart": "2025-03-29",
+    "registrationDeadline": "2025-03-28",
+    "duration": "2 weeks",
+    "schedule": "Weekend focused with flexible weekday sessions",
+    "timeCommitment": "20-25 hours per week"
+  },
+  "pricing": {
+    "tiers": [
+      {
+        "date": "2025-03-26T23:59:59+05:30",
+        "price": "₹879",
+        "label": "Early Bird"
+      },
+      {
+        "date": "2025-03-27T23:59:59+05:30", 
+        "price": "₹1,179",
+        "label": "Regular"
+      },
+      {
+        "date": "2025-03-28T23:59:59+05:30",
+        "price": "₹1,679",
+        "label": "Last Minute"
+      }
+    ],
+    "hasScholarships": true
+  },
+  "legalInfo": {
+    "companyType": "Sole Proprietorship",
+    "founder": "Harshit Choudhary",
+    "founderWebsite": "https://harshit.page",
+    "registrationStatus": "In Process"
+  },
+  "payments": {
+    "razorpayUrl": "https://rzp.io/rzp/wcs-cohort"
+  },
+  "cta": {
+    "primary": "Join the Cohort Today",
+    "secondary": "View Curriculum",
+    "url": "https://rzp.io/rzp/wcs-cohort"
+  }
+}

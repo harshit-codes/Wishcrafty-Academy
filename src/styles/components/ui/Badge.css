@@ -1,0 +1,110 @@
+/* Badge Component */
+.badge {
+  display: inline-block;
+  font-size: var(--font-size-xxxs);
+  font-weight: var(--font-weight-semibold);
+  padding: var(--space-xxxs) var(--space-xs);
+  border-radius: var(--radius-pill);
+  background: var(--gradient-primary);
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+  position: relative;
+  z-index: var(--z-index-default);
+}
+
+/* Badge variants */
+.badge--highlight {
+  font-size: var(--font-size-xxs);
+  padding: var(--space-xxs) var(--space-md);
+  background: var(--gradient-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.badge--coming-soon {
+  font-size: var(--font-size-xxxs);
+  padding: var(--space-xxxs) var(--space-xxs);
+  background: var(--gradient-primary);
+}
+
+/* Badge positions - Absolute positioning */
+.badge--top-right {
+  position: absolute;
+  top: -10px;
+  right: 10px;
+}
+
+.badge--top-left {
+  position: absolute;
+  top: -10px;
+  left: 10px;
+}
+
+.badge--bottom-right {
+  position: absolute;
+  bottom: -10px;
+  right: 10px;
+}
+
+.badge--bottom-left {
+  position: absolute;
+  bottom: -10px;
+  left: 10px;
+}
+
+.badge--bottom-center {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.badge--top-center {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* For backward compatibility with existing styles */
+.coming-soon-badge {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-size: 8px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.newsletter-badge {
+  position: absolute;
+  top: -20px;
+  right: 10px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.pricing-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  padding: 0.4rem 1.5rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}

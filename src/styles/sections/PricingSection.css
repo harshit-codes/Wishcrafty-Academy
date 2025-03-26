@@ -247,6 +247,22 @@
   max-width: 80px;
 }
 
+.timeline-note {
+  text-align: center;
+  margin: 1rem 0 2rem;
+  color: var(--light-text);
+  font-size: 0.95rem;
+}
+
+.timeline-note p {
+  margin: 0;
+}
+
+.timeline-note strong {
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
 /* Update media query to keep timeline horizontal */
 @media (max-width: 768px) {
   .pricing-note {

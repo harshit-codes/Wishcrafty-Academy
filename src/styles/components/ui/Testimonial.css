@@ -1,0 +1,143 @@
+/* Testimonial Component */
+.testimonial {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  position: relative;
+  border: 1px solid var(--color-border-primary);
+  height: 100%;
+  transition: var(--transition-medium);
+}
+
+.testimonial:before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  font-size: 3rem;
+  color: var(--color-primary);
+  line-height: 1;
+  opacity: 0.3;
+}
+
+.testimonial-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.testimonial-text {
+  font-size: var(--font-size-md);
+  color: var(--color-text-primary);
+  font-style: italic;
+  margin-bottom: var(--space-md);
+  line-height: var(--line-height-relaxed);
+  flex-grow: 1;
+}
+
+.testimonial-author-container {
+  display: flex;
+  margin-top: auto;
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border-primary);
+  align-items: center; /* Better vertical alignment */
+  justify-content: center; /* Center items horizontally */
+}
+
+.testimonial-profile {
+  margin-right: var(--space-md); /* Increased spacing */
+}
+
+.profile-image {
+  width: 70px; /* Increased from 60px */
+  height: 70px; /* Increased from 60px */
+  border-radius: var(--radius-circular);
+  object-fit: cover;
+  border: 3px solid var(--color-primary); /* Thicker border */
+  box-shadow: 0 3px 10px rgba(var(--color-primary-rgb), 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial:hover .profile-image {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(var(--color-primary-rgb), 0.5);
+}
+
+.testimonial-author {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the name and role */
+  text-align: center; /* Center text */
+  flex-grow: 1;
+}
+
+.author-name {
+  font-weight: var(--font-weight-bold); /* Bolder */
+  color: var(--color-text-primary);
+  font-size: var(--font-size-lg); /* Increased from md to lg */
+  margin-bottom: var(--space-xxs); /* Add some spacing */
+  text-align: center; /* Ensure text centering */
+}
+
+.author-role {
+  color: var(--color-secondary);
+  font-size: var(--font-size-sm); /* Increased from xs to sm */
+  margin-bottom: var(--space-sm); /* Increased spacing before LinkedIn icon */
+  font-weight: var(--font-weight-medium); /* Added weight for better visibility */
+  text-align: center; /* Ensure text centering */
+}
+
+.linkedin-icon {
+  color: var(--color-text-secondary);
+  transition: var(--transition-medium);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center; /* Center the icon */
+  padding: var(--space-xxs) var(--space-xs); /* Add padding for larger hit area */
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.05); /* Subtle background */
+  margin: 0 auto; /* Center horizontally */
+}
+
+.linkedin-icon svg {
+  width: 22px; /* Larger icon */
+  height: 22px;
+}
+
+.linkedin-icon:hover {
+  color: #0077B5; /* LinkedIn blue */
+  transform: translateY(-2px);
+  background: rgba(0, 119, 181, 0.1); /* LinkedIn blue background with low opacity */
+}
+
+@media (max-width: 480px) {
+  .testimonial-author-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .testimonial-profile {
+    margin-right: 0;
+    margin-bottom: var(--space-sm);
+  }
+  
+  /* Remove this as it's now the default */
+  /* .testimonial-author {
+    align-items: center;
+  } */
+}
+
+/* For backward compatibility */
+.testimonial p {
+  font-size: 1.1rem;
+  color: var(--light-text);
+  font-style: italic;
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+.testimonial-author {
+  text-align: right;
+  color: var(--secondary-color);
+  font-weight: 600;
+}

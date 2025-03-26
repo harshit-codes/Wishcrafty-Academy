@@ -1,0 +1,65 @@
+/* Social Icon Component */
+.social-icon {
+  color: var(--color-text-secondary);
+  transition: var(--transition-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-decoration: none;
+}
+
+.social-icon__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xs);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-circular);
+  position: relative;
+}
+
+.social-icon:hover {
+  color: var(--color-primary);
+  transform: translateY(-3px);
+}
+
+.social-icon:hover .social-icon__container {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.social-icon--coming-soon {
+  opacity: 0.6;
+  cursor: default;
+  position: relative;
+}
+
+.social-icon--coming-soon:hover {
+  transform: none;
+  color: var(--color-text-secondary);
+}
+
+/* For backward compatibility */
+.social-link {
+  color: var(--gray-text);
+  transition: color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+}
+
+.social-link:hover {
+  color: var(--primary-color);
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.social-link.coming-soon {
+  opacity: 0.6;
+  cursor: default;
+  position: relative;
+}

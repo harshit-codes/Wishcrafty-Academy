@@ -1,0 +1,126 @@
+/* Button Component */
+.button {
+  padding: var(--space-sm) var(--space-lg);
+  font-size: var(--font-size-sm);
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: var(--transition-medium);
+  font-weight: var(--font-weight-bold);
+  box-shadow: var(--shadow-md);
+  display: inline-block;
+  text-align: center;
+}
+
+/* Button variants */
+.button--primary {
+  position: relative;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  color: var(--color-text-primary);
+  border: none;
+  z-index: var(--z-index-default);
+}
+
+.button--primary::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: var(--gradient-primary);
+  background-size: 200% 100%;
+  border-radius: calc(var(--radius-pill) + 3px);
+  z-index: var(--z-index-deep);
+  animation: shineBorder 3s linear infinite;
+  opacity: 0.7;
+}
+
+.button--primary:hover {
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.button--primary:hover::before {
+  opacity: 1;
+  animation-duration: 2s;
+}
+
+.button--secondary {
+  background-color: transparent;
+  color: var(--color-text-primary);
+  border: 2px solid var(--color-secondary);
+  padding: calc(var(--space-sm) - 2px) calc(var(--space-lg) - 2px);
+  position: relative;
+  overflow: hidden;
+}
+
+.button--secondary::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(60deg, transparent, rgba(var(--color-secondary-rgb), 0.2), transparent);
+  transform: rotate(45deg);
+  animation: shineSweep 3s infinite linear;
+  z-index: var(--z-index-deep);
+}
+
+.button--secondary:hover {
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+  background-color: rgba(var(--color-secondary-rgb), 0.05);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Button sizes */
+.button--small {
+  padding: var(--space-xs) var(--space-md);
+  font-size: var(--font-size-xs);
+}
+
+.button--medium {
+  /* Default size, no extra styles needed */
+}
+
+.button--large {
+  padding: var(--space-md) var(--space-xl);
+  font-size: var(--font-size-md);
+}
+
+/* Disabled state */
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Animations */
+@keyframes shineBorder {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes shineSweep {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) rotate(45deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .button {
+    padding: var(--space-xs) var(--space-lg);
+    font-size: var(--font-size-xs);
+  }
+  
+  .button--large {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: var(--font-size-sm);
+  }
+}

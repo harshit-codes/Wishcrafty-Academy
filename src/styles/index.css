@@ -1,7 +1,28 @@
-/* Import common styles */
+/* Import common styling first */
 @import './common/Variables.css';
 @import './common/Layout.css';
-@import './common/Utilities.css';
+
+/* Import design system */
+@import './design-system/tokens.css';
+@import './design-system/utilities.css';
+
+/* Import UI components */
+@import './components/ui/Badge.css';
+@import './components/ui/Button.css';
+@import './components/ui/Card.css';
+@import './components/ui/Countdown.css';
+@import './components/ui/FaqItem.css';
+@import './components/ui/Modal.css';
+@import './components/ui/PricingCard.css';
+@import './components/ui/SectionHeader.css';
+@import './components/ui/SocialIcon.css';
+@import './components/ui/Testimonial.css';
+@import './components/ui/TestimonialCarousel.css';
+@import './components/ui/Timeline.css';
+@import './components/ui/Toast.css';
+
+/* Import layout components */
+@import './components/layout/Section.css';
 
 /* Import component styles */
 @import './components/Navbar.css';
@@ -28,6 +49,39 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #121212;
-  color: #f5f5f5;
+  background-color: var(--color-background-primary); /* Instead of var(--dark-bg) */
+  color: var(--color-text-primary); /* Instead of var(--light-text) */
+  font-size: var(--font-size-sm); /* Instead of 16px */
+  line-height: var(--line-height-normal); /* Instead of 1.5 */
+  padding-top: 30px; /* Add padding to account for the fixed banner */
+}
+
+/* Global styles */
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  line-height: var(--line-height-tight); /* Instead of 1.2 */
+}
+
+p {
+  margin-top: 0;
+}
+
+a {
+  color: var(--color-primary); /* Instead of var(--primary-color) */
+  text-decoration: none;
+  transition: var(--transition-fast); /* Instead of all 0.3s ease */
+}
+
+a:hover {
+  color: var(--color-primary-light); /* Instead of var(--hover-color) */
+}
+
+/* Spacer for the fixed announcement banner */
+.announcement-spacer {
+  height: 30px; /* Height of the announcement banner */
+  width: 100%;
 }
