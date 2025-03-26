@@ -3,35 +3,31 @@ import React, { useState, useEffect } from 'react';
 const FaqSection = () => {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   
-  // Testimonial data with added profile images
+  // Testimonial data without profile images
   const testimonials = [
     {
       text: "The AI-powered approach to product building at WishCrafty Academy helped me bridge the gap between product vision and implementation. I could finally create without depending on engineers for every small change.",
       author: "Utkarsh Srivastava",
       role: "Product @ HiLabs",
-      linkedin: "https://www.linkedin.com/in/utkarsh-srivastava-276812194/",
-      profileImage: "https://media.licdn.com/dms/image/D4D03AQFgm_1bNK06xw/profile-displayphoto-shrink_800_800/0/1704033817564?e=1719446400&v=beta&t=wRW9IWJu1BcNPNfzP1jLOGRD5-7J9pDFyYH43rGbT3E"
+      linkedin: "https://www.linkedin.com/in/utkarsh-srivastava-276812194/"
     },
     {
       text: "As someone with limited technical background, the no-code + AI curriculum gave me exactly what I needed - practical skills to transform ideas into functional products within days rather than months.",
       author: "Kshitij Singh",
       role: "Product @ Attentive",
-      linkedin: "https://www.linkedin.com/in/kas-kshitij/",
-      profileImage: "https://media.licdn.com/dms/image/D5603AQF1D3tS1EKyMA/profile-displayphoto-shrink_800_800/0/1692702474487?e=1719446400&v=beta&t=9qmvwNUc5FQdPkXkYR-3U71vg2PYtRqyMeXjM2dF2Bw"
+      linkedin: "https://www.linkedin.com/in/kas-kshitij/"
     },
     {
       text: "The program's emphasis on both product thinking and hands-on building set it apart. I left with not just theoretical knowledge but a working product I built myself using the latest AI tools.",
       author: "Dhivyaa M",
       role: "Product @ Flipkart",
-      linkedin: "https://www.linkedin.com/in/dhivyaa-m-9a9671190/",
-      profileImage: "https://media.licdn.com/dms/image/D5603AQGOzzFGqcBQIw/profile-displayphoto-shrink_800_800/0/1688224113422?e=1719446400&v=beta&t=Wl4PBJlvzkArFdZUQ5GSKFDfn9okGHDq3jYNNuXyKJ8"
+      linkedin: "https://www.linkedin.com/in/dhivyaa-m-9a9671190/"
     },
     {
       text: "WishCrafty Academy's cohort approach created accountability that helped me finish what I started. The combination of community support and cutting-edge tools accelerated my learning journey.",
       author: "Anmol Goyal",
       role: "Product @ Wayo",
-      linkedin: "https://www.linkedin.com/in/anmol-goyal-iitbhu/",
-      profileImage: "https://media.licdn.com/dms/image/D4D03AQEx3C-ypZz3-A/profile-displayphoto-shrink_800_800/0/1692185536671?e=1719446400&v=beta&t=CFFuNj-3DQfqP5zRBBwUw26J_V4-A-YFB84SjQMY4Go"
+      linkedin: "https://www.linkedin.com/in/anmol-goyal-iitbhu/"
     }
   ];
   
@@ -79,9 +75,6 @@ const FaqSection = () => {
                     <div className="testimonial-content">
                       <p>"{testimonial.text}"</p>
                       <div className="testimonial-author-container">
-                        <div className="testimonial-profile">
-                          <img src={testimonial.profileImage} alt={testimonial.author} className="profile-image" />
-                        </div>
                         <div className="testimonial-author">
                           <div className="author-name">{testimonial.author}</div>
                           <div className="author-role">{testimonial.role}</div>
