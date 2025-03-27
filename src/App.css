@@ -28,7 +28,7 @@ main {
   flex-direction: column;
 }
 
-/* Navbar Basic Structure - Clean Implementation */
+/* Clean implementation of navbar */
 .navbar-wrapper {
   position: fixed;
   top: 0;
@@ -44,11 +44,6 @@ main {
   transition: all 0.3s ease;
 }
 
-.navbar-wrapper.scrolled {
-  background: rgba(18, 18, 18, 0.85);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
 .navbar {
   display: flex;
   width: 100%;
@@ -59,10 +54,6 @@ main {
   border: none;
   box-sizing: border-box;
   transition: max-width 0.3s ease, padding 0.3s ease;
-}
-
-.navbar.scrolled {
-  max-width: 900px;
 }
 
 .navbar-content {
@@ -77,18 +68,12 @@ main {
 .navbar-primary {
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   padding: 0.8rem 1.5rem;
   height: 50px;
   box-sizing: border-box;
   flex: 3;
-  text-align: left;
-}
-
-.navbar.scrolled .navbar-primary {
-  height: 45px;
-  padding: 0.6rem 1.5rem;
 }
 
 /* Title styling */
@@ -105,14 +90,9 @@ main {
   transition: all 0.3s ease;
 }
 
-.navbar.scrolled .section-title {
-  font-size: 1.1rem;
-}
-
 /* Icons navigation section */
 .navbar-sections {
   width: auto;
-  border-top: none;
   display: flex;
   align-items: center;
   flex: 2;
@@ -129,11 +109,6 @@ main {
   align-items: center;
 }
 
-.navbar-links li {
-  padding: 0;
-  margin: 0;
-}
-
 /* Navigation link styling */
 .nav-link {
   background: none;
@@ -147,22 +122,13 @@ main {
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-.nav-link:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
-}
-
-.nav-link:active {
-  transform: translateY(1px);
-}
-
 .nav-link svg {
   width: 20px;
   height: 20px;
   stroke: currentColor;
 }
 
-/* Active state for navigation links */
+/* Active state styling */
 .navbar-links li.active .nav-link {
   color: var(--color-primary, #4a90e2);
   position: relative;
@@ -180,29 +146,7 @@ main {
   border-radius: 50%;
 }
 
-/* Section styling */
-section[id] {
-  display: block;
-  position: relative;
-  scroll-margin-top: var(--navbar-height, 80px);
-  scroll-snap-margin-top: 100px; /* For older browsers */
-  z-index: 1;
-  width: 100%;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
-
-/* Hide section ID markers */
-section[id]::before, section[id]::after {
-  display: none;
-}
-
-/* Force hide any potential fragment identifiers */
-*[id]:target::before {
-  display: none;
-}
-
-/* Responsive adjustments */
+/* Media queries for responsive layout */
 @media (max-width: 768px) {
   .navbar-content {
     flex-direction: column;
@@ -222,40 +166,5 @@ section[id]::before, section[id]::after {
   
   .section-title {
     text-align: center;
-  }
-  
-  /* Adjust hero section to account for navbar height */
-  .hero-section {
-    margin-top: 110px;
-  }
-}
-
-@media (min-width: 769px) {
-  .navbar-content {
-    padding: 0 1.5rem;
-  }
-  
-  .section-title {
-    font-size: 1.4rem;
-  }
-  
-  /* Adjust hero section for taller navbar */
-  .hero-section {
-    margin-top: 70px;
-  }
-}
-
-@media (max-width: 480px) {
-  .section-title {
-    font-size: 1rem;
-    max-width: 200px;
-  }
-  
-  .nav-link {
-    padding: 0.3rem;
-  }
-  
-  .navbar-links {
-    gap: 0.5rem;
   }
 }

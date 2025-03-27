@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import HeroSection from './components/sections/HeroSection';
 import OverviewSection from './components/sections/OverviewSection';
 import TeachingSection from './components/sections/TeachingSection';
@@ -14,50 +14,41 @@ import { ToastProvider } from './contexts/ToastContext';
 import { OverviewIcon, TeachingIcon, ToolsIcon, PricingIcon, FaqIcon } from './components/SectionIcons';
 import './styles/App.css';
 
-// Define HomeIcon inline since it seems to be missing from SectionIcons
-const HomeIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-    <polyline points="9 22 9 12 15 12 15 22"></polyline>
-  </svg>
-);
+// Define sections for navigation
+const navigationSections = [
+  {
+    id: 'overview',
+    name: 'Program Overview',
+    icon: OverviewIcon,
+  },
+  {
+    id: 'teaching',
+    name: 'Teaching Methodology',
+    icon: TeachingIcon,
+  },
+  {
+    id: 'tools',
+    name: 'Tools & Tech',
+    icon: ToolsIcon,
+  },
+  {
+    id: 'pricing',
+    name: 'Program Fee',
+    icon: PricingIcon,
+  },
+  {
+    id: 'faq',
+    name: 'FAQs',
+    icon: FaqIcon,
+  }
+];
 
 function App() {
-  // Use React's useState for state management
-  const [activeSection, setActiveSection] = React.useState('home');
-  const [scrolled, setScrolled] = React.useState(false);
-  const [showLegalModal, setShowLegalModal] = React.useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+  const [scrolled, setScrolled] = useState(false);
+  const [showLegalModal, setShowLegalModal] = useState(false);
   
-  // Define sections - exclude home from navigation display
-  const navigationSections = [
-    {
-      id: 'overview',
-      name: 'Program Overview',
-      icon: OverviewIcon,
-    },
-    {
-      id: 'teaching',
-      name: 'Teaching Methodology',
-      icon: TeachingIcon,
-    },
-    {
-      id: 'tools',
-      name: 'Tools & Tech',
-      icon: ToolsIcon,
-    },
-    {
-      id: 'pricing',
-      name: 'Program Fee',
-      icon: PricingIcon,
-    },
-    {
-      id: 'faq',
-      name: 'FAQs',
-      icon: FaqIcon,
-    }
-  ];
-  
-  // Simplified scrollToSection function
+  // Function to scroll to section
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);
     if (!section) return;
@@ -71,36 +62,37 @@ function App() {
     });
   };
   
-  // Track scroll position for navbar appearance
-  React.useEffect(() => {
+  // Track scroll position for navbar appearance and active section
+  useEffect(() => {
     const handleScroll = () => {
       // Update navbar appearance based on scroll position
       setScrolled(window.scrollY > 50);
       
-      // Update active section based on scroll position
-      const sections = ['overview', 'teaching', 'tools', 'pricing', 'faq'];
+      // Get all section IDs including home
+      const sections = ['home', 'overview', 'teaching', 'tools', 'pricing', 'faq'];
       
-      // Default to home section
-      let current = 'home';
-      
-      // Find current section in view
+      // Calculate which section is currently visible
       for (const id of sections) {
         const section = document.getElementById(id);
         if (!section) continue;
         
-        const sectionTop = section.offsetTop - 150;
-        const sectionBottom = sectionTop + section.offsetHeight;
+        // Get section position data
+        const rect = section.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
         
-        if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
-          current = id;
+        // Consider section active if it occupies significant portion of the viewport
+        if (rect.top < viewportHeight * 0.5 && rect.bottom > 0) {
+          setActiveSection(id);
           break;
         }
       }
-      
-      setActiveSection(current);
     };
     
     window.addEventListener('scroll', handleScroll);
+    
+    // Initial check
+    handleScroll();
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
