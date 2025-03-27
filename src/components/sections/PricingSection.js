@@ -53,11 +53,14 @@ const PricingSection = () => {
       // Format deadline text based on date
       const options = { month: 'short', day: 'numeric' };
       const formattedDate = targetDate.toLocaleDateString('en-US', options);
+      
+      // Always show exact time in the card countdown (11:59 AM not Noon)
       const formattedTime = targetDate.toLocaleTimeString('en-US', {
         hour: '2-digit',
         minute: '2-digit',
         hour12: true
       });
+      
       setDeadlineText(`${formattedDate}, ${formattedTime}`);
       
       // Calculate remaining time
@@ -103,10 +106,30 @@ const PricingSection = () => {
   );
 
   // Prepare timeline items from pricing tiers
-  const timelineItems = pricingTiers.map(tier => ({
-    date: `Until ${new Date(tier.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`,
-    content: tier.price
-  }));
+  const timelineItems = pricingTiers.map(tier => {
+    // Get the date from the tier
+    const date = new Date(tier.date);
+    
+    // Format the date
+    const formattedDate = date.toLocaleDateString('en-US', { 
+      month: 'short', 
+      day: 'numeric' 
+    });
+    
+    // Check if it's noon (11:59 AM)
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    
+    // Keep "Noon" in the timeline display
+    const displayText = (hours === 11 && minutes === 59) 
+      ? `Until ${formattedDate} Noon` 
+      : `Until ${formattedDate}`;
+    
+    return {
+      date: displayText,
+      content: tier.price
+    };
+  });
 
   return (
     <section className="content-section" id="pricing">

@@ -4,26 +4,26 @@
   "siteTagline": "Learn, Build, Grow",
   "contact": {
     "email": "hellowishcrafty@gmail.com",
-    "calendly": "https://calendly.com/wishcrafty/intro",
+    "calendly": "#",
     "supportEmail": "hellowishcrafty@gmail.com",
     "whatsapp": "8826986083",
     "whatsappMessage": "Hello! I'm interested in WishCrafty Academy program and would like to know more."
   },
   "social": {
     "linkedin": {
-      "url": "https://linkedin.com/in/harshitchoudhary",
+      "url": "https://www.linkedin.com/company/wishcraftyacademy",
       "displayName": "LinkedIn",
       "username": "@harshitchoudhary",
       "active": true
     },
     "instagram": {
-      "url": "https://instagram.com/wishcrafty.studio",
+      "url": "#",
       "displayName": "Instagram",
       "username": "@wishcrafty.studio",
       "active": false
     },
     "youtube": {
-      "url": "https://youtube.com/@wishcrafty",
+      "url": "#",
       "displayName": "YouTube",
       "username": "@wishcrafty",
       "active": false
@@ -79,6 +79,6 @@
     "ogDescription": "Learn to build and manage products in 2 weeks using AI + No-Code",
     "ogImage": "/images/og-image.jpg",
     "twitterCard": "summary_large_image",
-    "twitterCreator": "@harshitchoudhary"
+    "twitterCreator": "@harshittells"
   }
 }
