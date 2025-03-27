@@ -7,7 +7,14 @@ const TeachingSection = () => {
   // Add null checks to avoid "Cannot read properties of undefined" errors
   const methodologies = teachingContent?.methodologies || [];
   const sessionFlow = teachingContent?.sessionFlow || { title: "Daily Session Flow", steps: [] };
-  const tracks = teachingContent?.tracks || { title: "Two Parallel Tracks", tracksList: [] };
+  
+  // Add time blocks for each step
+  // Note: These should ideally come from your data file
+  const timeBlocks = [
+    "8:00 AM, via Portal",
+    "8:00 AM - 8:00 PM, Async",
+    "8:00 PM - 9:00 PM, Live",
+  ];
 
   return (
     <section className="content-section" id="teaching">
@@ -28,9 +35,11 @@ const TeachingSection = () => {
         {sessionFlow.steps && sessionFlow.steps.length > 0 && (
           <div className="session-flow">
             <h3 className="session-flow-header">{sessionFlow.title}</h3>
+            <p className="session-flow-subheader">Live Interactive Sessions • Every Day 8:00 PM to 9:00 PM • 100% Online</p>
             <div className="session-flow-diagram">
               {sessionFlow.steps.map((step, index) => (
                 <div className="session-flow-step" key={index}>
+                  <div className="time-block">{timeBlocks[index] || "8:00 PM - 9:00 PM"}</div>
                   <div className="step-icon">{step.icon}</div>
                   <div className="step-content">
                     <h4 className="step-title">{step.title}</h4>
@@ -39,24 +48,6 @@ const TeachingSection = () => {
                   {index < sessionFlow.steps.length - 1 && (
                     <div className="step-arrow">→</div>
                   )}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-        
-        {tracks.tracksList && tracks.tracksList.length > 0 && (
-          <div className="curriculum-tracks">
-            <h3 className="track-header">{tracks.title}</h3>
-            <div className="tracks-container">
-              {tracks.tracksList.map((track, index) => (
-                <div className="track" key={index}>
-                  <h4>{track.title}</h4>
-                  <ul className="track-list">
-                    {track.skills.map((skill, idx) => (
-                      <li key={idx}>{skill}</li>
-                    ))}
-                  </ul>
                 </div>
               ))}
             </div>
