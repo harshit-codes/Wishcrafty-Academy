@@ -37,7 +37,7 @@ const FaqSection = () => {
           
           {/* Instructor Message Section */}
           <div className="instructor-message-section">
-            <h3>A Message From Your Instructor</h3>
+            <h3>A Message From Instructor</h3>
             <div className="instructor-message-container">
               <div className="instructor-image-container">
                 {instructorImage ? (
