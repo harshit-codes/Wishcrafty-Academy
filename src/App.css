@@ -1,50 +1,39 @@
+/* Root container styles */
 .App {
   text-align: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: var(--light-text);
   background-color: var(--dark-bg);
   min-height: 100vh;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-/* Modern Navbar Styling */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.2rem 1.5rem;
+  overflow-x: hidden;
   position: relative;
-  max-width: 1000px; /* Increased width from 600px */
+}
+
+/* Content wrapper styles */
+.content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  box-sizing: border-box;
-  background: none;
-  border: none;
-  box-shadow: none;
-  transition: max-width 0.3s ease, padding 0.3s ease;
+  padding-top: var(--navbar-height, 80px);
 }
 
-.navbar.scrolled {
-  padding: 0.8rem 1.5rem;
-  max-width: 900px; /* Shrink a bit when scrolled */
+/* Main content container */
+main {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Navbar wrapper to allow for centered navbar with full-width background */
+/* Navbar Basic Structure - Clean Implementation */
 .navbar-wrapper {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  /* Lighter, more translucent background */
   background: rgba(18, 18, 18, 0.7);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -52,7 +41,7 @@
   z-index: 1000;
   display: flex;
   justify-content: center;
-  transition: background 0.3s ease, padding 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .navbar-wrapper.scrolled {
@@ -60,692 +49,10 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-@keyframes gradientShift {
-  0% { background-position: 0% 50% }
-  50% { background-position: 100% 50% }
-  100% { background-position: 0% 50% }
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  font-size: 1.4rem;
-  font-weight: 500;
-  padding-right: 1rem;
-  opacity: 0.95;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.logo:hover {
-  opacity: 1;
-  transform: translateY(-1px);
-}
-
-.logo-image {
-  height: 36px;
-  margin-right: 12px;
-  filter: brightness(1.05);
-  transition: all 0.3s ease;
-}
-
-.logo-text {
-  display: inline-block;
-  color: var(--light-text);
-  transition: all 0.3s ease;
-  letter-spacing: 0.5px;
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-links li {
-  margin: 0 1rem;
-  position: relative;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: rgba(255, 255, 255, 0.7);
-  font-weight: 400;
-  font-size: 0.95rem;
-  letter-spacing: 0.8px;
-  padding: 0.5rem 0.2rem;
-  transition: color 0.2s ease;
-  position: relative;
-}
-
-.nav-links a:hover {
-  color: rgba(255, 255, 255, 0.95);
-}
-
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 1px;
-  bottom: 0;
-  left: 0;
-  background-color: var(--light-text);
-  transition: width 0.3s ease;
-  opacity: 0.6;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
-}
-
-.nav-links a.active {
-  color: rgba(255, 255, 255, 0.95);
-  font-weight: 500;
-}
-
-.nav-links a.active::after {
-  width: 100%;
-  opacity: 0.8;
-  height: 1.5px;
-}
-
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  z-index: 1001;
-  transition: all 0.3s ease;
-  opacity: 0.85;
-}
-
-.menu-toggle:hover {
-  opacity: 1;
-}
-
-.menu-toggle span {
-  width: 22px;
-  height: 1.5px;
-  background-color: var(--light-text);
-  margin: 4px 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  border-radius: 1px;
-}
-
-/* Hero Section */
-.hero-section {
-  position: relative;
-  color: var(--light-text);
-  padding: 0;
-  min-height: 85vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background-color: var(--dark-bg);
-  margin-top: 70px;
-  width: 100%;
-}
-
-/* Remove the hero-background class as it's no longer needed */
-
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* Enhanced gradient overlay with more vibrant purple hints */
-  background: radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.2) 0%, rgba(18, 18, 18, 0.95) 100%);
-  z-index: 2;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 3;
-  text-align: center;
-  padding: 0 2rem;
-  max-width: 600px; /* Fixed narrow width */
-  width: 100%;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-.hero-section h1 {
-  font-size: 3.5rem;
-  margin-bottom: 1.5rem;
-  position: relative;
-  background: linear-gradient(90deg, #BB86FC, #8A2BE2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1.2;
-}
-
-.hero-section h1.hero-title {
-  margin-bottom: 2rem;
-  line-height: 1.2;
-  background: none;
-  -webkit-background-clip: unset;
-  -webkit-text-fill-color: unset;
-  background-clip: unset;
-  color: var(--light-text);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.title-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5em;
-  width: 100%;
-}
-
-.hero-title .subtitle {
-  /* More cohesive gradient to match the product label */
-  background: linear-gradient(90deg, #daf091, #9de255);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-top: 0.5em;
-  font-size: 1.8rem; /* Smaller than the rotating text */
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: 0.5px; /* Add letter spacing for distinction */
-  text-transform: uppercase; /* Make it uppercase for contrast */
-}
-
-.hero-section p {
-  font-size: 1.2rem;
-  max-width: 700px;
-  margin: 0 auto 3rem;
-  color: var(--light-text);
-  line-height: 1.6;
-}
-
-.cta-buttons {
-  display: flex;
-  gap: 1.5rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.cta-button {
-  padding: 1rem 2.5rem;
-  font-size: 1.1rem;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: bold;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-.cta-button.primary {
-  position: relative;
-  background: linear-gradient(135deg, #9D4EDD, #7B2CBF);
-  color: white;
-  border: none;
-  z-index: 1;
-}
-
-.cta-button.primary::before {
-  content: '';
-  position: absolute;
-  top: -3px;
-  left: -3px;
-  right: -3px;
-  bottom: -3px;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--primary-color));
-  background-size: 200% 100%;
-  border-radius: 33px; /* Slightly larger than the button */
-  z-index: -1;
-  animation: shineBorder 3s linear infinite;
-  opacity: 0.7;
-}
-
-.cta-button.primary:hover {
-  background: linear-gradient(135deg, #BB86FC, #9D4EDD);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(157, 78, 221, 0.6);
-}
-
-.cta-button.primary:hover::before {
-  opacity: 1;
-  animation-duration: 2s; /* Faster animation on hover */
-}
-
-.cta-button.secondary {
-  background-color: transparent;
-  color: var(--light-text);
-  border: 2px solid var(--secondary-color);
-  padding: calc(1rem - 2px) calc(2.5rem - 2px);
-  position: relative;
-  overflow: hidden;
-}
-
-.cta-button.secondary::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(60deg, transparent, rgba(218, 240, 145, 0.2), transparent);
-  transform: rotate(45deg);
-  animation: shineSweep 3s infinite linear;
-  z-index: -1;
-}
-
-.cta-button.secondary:hover {
-  border-color: var(--secondary-color);
-  color: var(--secondary-color);
-  background-color: rgba(218, 240, 145, 0.05);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(218, 240, 145, 0.3);
-}
-
-/* Content Sections */
-.content-section {
-  padding: 6rem 0; /* Remove horizontal padding here */
-  position: relative;
-}
-
-.content-section-inner {
-  max-width: 600px;
-  width: 100%;
-  margin: 0 auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  box-sizing: border-box;
-}
-
-.content-section:nth-child(odd) {
-  background-color: rgba(30, 30, 30, 0.6);
-  width: 100%;
-}
-
-.content-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  color: var(--primary-color);
-  position: relative;
-  display: inline-block;
-}
-
-.content-section h2::after {
-  content: '';
-  position: absolute;
-  width: 50px;
-  height: 4px;
-  background-color: var(--secondary-color);
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.content-section p {
-  font-size: 1.2rem;
-  line-height: 1.8;
-  color: var(--gray-text);
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-/* Footer */
-footer {
-  background-color: var(--darker-bg);
-  color: var(--gray-text);
-  padding: 3rem 0;
-  margin-top: 2rem;
-  width: 100%;
-}
-
-.footer-content {
-  max-width: 600px;
-  width: 100%;
-  margin: 0 auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  box-sizing: border-box;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 850px) {
-  .nav-links {
-    /* Use more reliable flex centering */
-    justify-content: center;
-    width: 100%;
-    margin-top: 0.5rem;
-  }
-  
-  .navbar {
-    flex-direction: column;
-    padding: 1rem 1.5rem 0.7rem;
-  }
-  
-  .logo {
-    margin-bottom: 0.7rem;
-    padding-right: 0; /* Reset padding on mobile */
-  }
-  
-  .menu-toggle {
-    position: absolute;
-    right: 1.5rem;
-    top: 1.2rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
-  }
-  
-  .nav-links {
-    position: fixed;
-    flex-direction: column;
-    background: rgba(18, 18, 18, 0.95);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    width: 100%;
-    top: 70px;
-    left: 0;
-    padding: 1.5rem 0;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out, opacity 0.2s ease;
-    transform: translateY(-100%);
-    opacity: 0;
-    z-index: 999;
-    border-bottom: 1px solid rgba(157, 78, 221, 0.2);
-  }
-  
-  .nav-links.active {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  
-  .nav-links li {
-    margin: 1.2rem 0;
-    text-align: center;
-  }
-  
-  .nav-links a::before {
-    bottom: -4px;
-  }
-  
-  .navbar {
-    padding: 0.8rem 1.5rem;
-  }
-  
-  .navbar.scrolled {
-    padding: 0.7rem 1.5rem;
-  }
-  
-  .hero-section h1 {
-    font-size: 2.5rem;
-  }
-  
-  .hero-section p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-  }
-  
-  .cta-buttons {
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
-  }
-  
-  .content-section h2 {
-    font-size: 2rem;
-  }
-  
-  .content-section {
-    padding: 4rem 1.5rem;
-  }
-
-  .hero-section h1.hero-title {
-    font-size: 2.5rem;
-  }
-
-  .product-label {
-    font-size: 2.3rem;
-  }
-  
-  .hero-title .subtitle {
-    font-size: 1.5rem;
-  }
-  
-  .bg-purple-700 {
-    font-size: 1.8rem;
-    height: 2.8rem;
-  }
-  
-  .hero-section p {
-    font-size: 1.1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-section h1 {
-    font-size: 2rem;
-  }
-  
-  .hero-section p {
-    font-size: 1.1rem;
-  }
-  
-  .hero-section {
-    min-height: 75vh;
-  }
-  
-  .cta-button {
-    padding: 0.8rem 2rem;
-  }
-  
-  .logo-text {
-    font-size: 1.2rem;
-  }
-  
-  .logo-image {
-    height: 30px;
-  }
-
-  .hero-section h1.hero-title {
-    font-size: 2rem;
-  }
-
-  .product-label {
-    font-size: 1.9rem;
-  }
-  
-  .hero-title .subtitle {
-    font-size: 1.2rem;
-  }
-  
-  .bg-purple-700 {
-    font-size: 1.6rem;
-    height: 2.4rem;
-  }
-  
-  .hero-section p {
-    font-size: 1rem;
-    margin-bottom: 2rem;
-  }
-}
-
-.product-label {
-  /* Enhanced gradient with more vibrant colors */
-  background: linear-gradient(90deg, #BB86FC, #9D4EDD);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 800; /* Bolder */
-  font-size: 3rem; /* Slightly larger */
-  margin-right: 0.5rem;
-}
-
-/* Tailwind-like utility classes */
-.flex {
-  display: flex;
-}
-
-.items-center {
-  align-items: center;
-}
-
-.justify-center {
-  justify-content: center;
-}
-
-.ml-2 {
-  margin-left: 0.5rem;
-}
-
-.w-full {
-  width: 100%;
-}
-
-.overflow-hidden {
-  overflow: hidden;
-}
-
-.bg-purple-700 {
-  /* Slightly more vibrant purple with better contrast */
-  background-color: rgba(157, 78, 221, 0.9);
-  font-size: 2.2rem; /* Larger than the subtitle */
-  height: 3.2rem;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 4px 12px rgba(157, 78, 221, 0.3);
-}
-
-.text-white {
-  color: white;
-}
-
-.rounded-lg {
-  border-radius: 0.5rem;
-}
-
-.px-2 {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-}
-
-.py-0\.5 {
-  padding-top: 0.125rem;
-  padding-bottom: 0.125rem;
-}
-
-.pb-0\.5 {
-  padding-bottom: 0.125rem;
-}
-
-@media (min-width: 640px) {
-  .sm\:px-2 {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-  
-  .sm\:py-1 {
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
-  }
-  
-  .sm\:pb-1 {
-    padding-bottom: 0.25rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .md\:px-3 {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-  }
-  
-  .md\:py-2 {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-  }
-  
-  .md\:pb-1 {
-    padding-bottom: 0.25rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .product-label {
-    font-size: 2.3rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .product-label {
-    font-size: 1.9rem;
-  }
-}
-
-/* CTA Button with Shiny Border Animation */
-@keyframes shineBorder {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes shineSweep {
-  0% {
-    transform: translateX(-100%) rotate(45deg);
-  }
-  100% {
-    transform: translateX(100%) rotate(45deg);
-  }
-}
-
-/* Global content width constraint */
-.content-container {
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-/* Dynamic Navbar Styling */
-.navbar-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: rgba(18, 18, 18, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  transition: background 0.3s ease, padding 0.3s ease;
-}
-
 .navbar {
   display: flex;
-  justify-content: space-between;
   width: 100%;
-  max-width: 1000px; /* Increased width from 600px */
+  max-width: 1000px;
   padding: 0;
   background: none;
   box-shadow: none;
@@ -754,819 +61,33 @@ footer {
   transition: max-width 0.3s ease, padding 0.3s ease;
 }
 
+.navbar.scrolled {
+  max-width: 900px;
+}
+
 .navbar-content {
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
+/* Primary navbar section with title */
 .navbar-primary {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0.8rem 1.5rem;
-  transition: all 0.3s ease;
-  flex: 2;
-  text-align: left;
-  padding-left: 1.5rem;
-  height: 50px; /* Reduced height from 60px */
-}
-
-.navbar.scrolled .navbar-primary {
-  height: 45px; /* Further reduce height when scrolled */
-  padding: 0.6rem 1.5rem;
-}
-
-.navbar.scrolled .navbar-primary {
-  padding: 0.7rem 1.5rem;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.logo-image {
-  height: 30px;
-  margin-right: 12px;
-  transition: all 0.3s ease;
-}
-
-.section-title {
-  font-size: 1.25rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.95);
-  transition: all 0.3s ease;
-  text-align: left;
-  max-width: 350px; /* Increased from 180px */
-  text-transform: capitalize;
-}
-
-.navbar.scrolled .section-title {
-  font-size: 1.1rem;
-}
-
-.navbar-sections {
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  overflow: hidden;
-  transition: max-height 0.3s ease, opacity 0.2s ease;
-  max-height: 0;
-  opacity: 0;
-}
-
-.navbar-sections.active {
-  max-height: 300px;
-  opacity: 1;
-}
-
-.section-icons {
-  display: flex;
-  justify-content: space-around;
-  list-style: none;
-  margin: 0;
-  padding: 1rem 0;
-}
-
-.section-icons li {
-  margin: 0;
-  opacity: 0.7;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.section-icons li.active {
-  opacity: 1;
-}
-
-.section-icons li.active .section-icon-btn {
-  color: var(--secondary-color);
-}
-
-.section-icon-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  color: var(--light-text);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: all 0.2s ease;
-}
-
-.section-icon-btn:hover {
-  color: var(--secondary-color);
-  transform: translateY(-2px);
-}
-
-.section-icon-btn svg {
-  margin-bottom: 0.3rem;
-  width: 24px;
-  height: 24px;
-}
-
-.section-label {
-  font-size: 0.75rem;
-  font-weight: 400;
-  max-width: 70px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Adjust hero section to account for new navbar height */
-.hero-section {
-  margin-top: 60px;
-}
-
-/* Desktop styles */
-@media (min-width: 769px) {
-  .navbar-content {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1rem;
-  }
-  
-  .navbar-primary {
-    width: auto;
-    justify-content: flex-start;
-    flex: 3;
-  }
-  
-  .navbar-sections {
-    width: auto;
-    flex: 2;
-    border-top: none;
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .section-icons {
-    padding: 0 0.5rem;
-  }
-  
-  .menu-toggle {
-    display: none;
-  }
-  
-  .logo-image {
-    height: 36px;
-  }
-  
-  .section-title {
-    font-size: 1.4rem;
-  }
-  
-  /* Increase hero section margin for taller navbar */
-  .hero-section {
-    margin-top: 70px;
-  }
-}
-
-/* Centered Navbar with Icon Effects */
-.navbar-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: rgba(18, 18, 18, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-
-.navbar-wrapper.scrolled {
-  background: rgba(18, 18, 18, 0.85);
-}
-
-.navbar {
-  display: flex;
-  width: 100%;
-  max-width: 1000px; /* Increased width from 600px */
-  padding: 0;
-  background: none;
-  box-shadow: none;
-  border: none;
+  height: 50px;
   box-sizing: border-box;
-  transition: max-width 0.3s ease, padding 0.3s ease;
-}
-
-.navbar-content {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.navbar-primary {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem 1.5rem;
-  width: 100%;
-  transition: all 0.4s ease;
-  flex: 2;
+  flex: 3;
   text-align: left;
-  padding-left: 1.5rem;
-  height: 50px; /* Reduced height from 60px */
 }
 
 .navbar.scrolled .navbar-primary {
-  height: 45px; /* Further reduce height when scrolled */
-  padding: 0.6rem 1.5rem;
-}
-
-.section-title {
-  font-size: 1.25rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.95);
-  transition: all 0.3s ease;
-  text-align: left;
-  max-width: 350px; /* Increased from 180px */
-  text-transform: capitalize;
-}
-
-.navbar.scrolled .section-title {
-  font-size: 1.1rem;
-}
-
-/* Section Icons Bar */
-.navbar-sections {
-  width: 100%;
-  transition: all 0.4s ease;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.section-icons {
-  display: flex;
-  justify-content: space-around;
-  list-style: none;
-  margin: 0;
-  padding: 0.7rem 0;
-  transition: all 0.4s ease;
-}
-
-.section-icons li {
-  margin: 0;
-  opacity: 0.7;
-  transition: all 0.4s ease;
-  transform-origin: center;
-  transform: scale(1);
-}
-
-.section-icons li.inactive {
-  transform: scale(0.7);
-  opacity: 0.3;
-}
-
-.section-icons li.active {
-  opacity: 1;
-}
-
-.section-icons.minimized li.active {
-  transform: scale(1.1);
-}
-
-.section-icon-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  color: var(--light-text);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-/* Remove square border and update button styling */
-.section-icon-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  color: var(--light-text);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  position: relative;
-  /* Remove border-radius: 4px; to eliminate square border */
-}
-
-/* Remove the shine/torch lighting effect by removing the border */
-.section-icon-btn::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  /* Remove border: 1px solid transparent; to eliminate border */
-  /* Remove border-radius: 4px; to eliminate square corners */
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.section-icon-btn:hover::after,
-.section-icons li.active .section-icon-btn::after {
-  opacity: 0; /* Set to 0 to hide any remaining effect */
-  /* Remove border-color and box-shadow to eliminate lighting effect */
-}
-
-/* Make icon container smoother without square edges */
-.icon-container {
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px; /* Increased from 24px */
-  height: 30px; /* Increased from 24px */
-  /* Remove border-radius: 4px; to eliminate square corners */
-}
-
-/* Remove shine effect animation completely */
-.icon-shine {
-  display: none; /* Hide the shine element entirely */
-}
-
-.section-icons li.active .section-icon-btn {
-  color: var(--secondary-color);
-}
-
-/* Icon shine effect */
-.icon-container {
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-}
-
-.icon-shine {
-  position: absolute;
-  top: -100%;
-  left: -100%;
-  width: 300%;
-  height: 300%;
-  background: linear-gradient(
-    to bottom right,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.2) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: rotate(30deg);
-  animation: shine 4s infinite ease-in-out;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.section-icons li.active .icon-shine {
-  opacity: 1;
-}
-
-@keyframes shine {
-  0% {
-    transform: translateX(-100%) translateY(-100%) rotate(30deg);
-  }
-  100% {
-    transform: translateX(100%) translateY(100%) rotate(30deg);
-  }
-}
-
-/* Responsive adjustments */
-@media (min-width: 769px) {
-  .navbar-content {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 1rem;
-  }
-  
-  .navbar-primary {
-    width: auto;
-    justify-content: flex-start;
-  }
-  
-  .navbar-sections {
-    width: auto;
-    border-top: none;
-  }
-  
-  .section-icons {
-    padding: 0;
-  }
-  
-  .section-icons li {
-    margin: 0 0.6rem;
-  }
-}
-
-/* Hide section labels */
-.section-label {
-  display: none;
-}
-
-/* Fix for navbar issues - make icons always visible */
-.navbar-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: rgba(18, 18, 18, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-
-.navbar {
-  display: flex;
-  width: 100%;
-  max-width: 1000px; /* Increased width from 600px */
-  padding: 0;
-  background: none;
-  box-shadow: none;
-  border: none;
-  box-sizing: border-box;
-  transition: max-width 0.3s ease, padding 0.3s ease;
-}
-
-.navbar-content {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Center title and add proper spacing */
-.navbar-primary {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.8rem 1rem;
-  width: 100%;
-  transition: all 0.4s ease;
-  position: relative; /* For absolute positioning of logo */
-  min-height: 3.5rem; /* Ensure consistent height */
-  flex: 2;
-  text-align: left;
-  padding-left: 1.5rem;
-  height: 50px; /* Reduced height from 60px */
-}
-
-.navbar.scrolled .navbar-primary {
-  height: 45px; /* Further reduce height when scrolled */
-  padding: 0.6rem 1.5rem;
-}
-
-/* Adjust logo to prevent overlap with title */
-/*
-.navbar-logo {
-  position: absolute;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 24px;
-  display: flex;
-  align-items: center;
-}
-
-.navbar-logo img {
-  height: 24px;
-  width: auto;
-}
-*/
-
-/* Fix title styling and visibility */
-.section-title {
-  font-size: 1.25rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.95);
-  transition: all 0.3s ease;
-  text-align: left;
-  max-width: 350px; /* Increased from 180px */
-  text-transform: capitalize;
-}
-
-.navbar.scrolled .section-title {
-  font-size: 1.1rem;
-}
-
-/* Fix icon centering and remove glass effect */
-.section-icons {
-  display: flex;
-  justify-content: center; /* Center icons */
-  list-style: none;
-  margin: 0;
-  padding: 0.6rem 0;
-  transition: all 0.4s ease;
-  width: 100%;
-  overflow: visible;
-}
-
-.icon-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  /* Remove glass effect */
-  background: none;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  border-radius: 0;
-  transition: all 0.3s ease;
-  box-shadow: none;
-}
-
-.section-icons li.active .icon-container {
-  /* Remove glass effect for active state */
-  background: none;
-  box-shadow: none;
-}
-
-.section-icon-btn:hover .icon-container {
-  transform: translateY(-2px);
-  /* Remove glass effect for hover state */
-  background: none;
-  box-shadow: none;
-}
-
-/* Remove active glow effect */
-.section-icons li.active .icon-container::after {
-  display: none;
-}
-
-/* Ensure section title is centered properly */
-.section-title {
-  font-size: 1.25rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.95);
-  transition: all 0.3s ease;
-  text-align: left;
-  max-width: 350px; /* Increased from 180px */
-  text-transform: capitalize;
-}
-
-.navbar.scrolled .section-title {
-  font-size: 1.1rem;
-}
-
-/* Make section icons always visible with proper styling */
-.navbar-sections {
-  width: 100%;
-  transition: all 0.4s ease;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  /* Always display icons - removed max-height: 0 and opacity: 0 */
-  max-height: 100px;
-  opacity: 1;
-  overflow: visible; /* Ensure no clipping */
-}
-
-/* Proper spacing and size for icon section */
-.section-icons {
-  display: flex;
-  justify-content: space-around;
-  list-style: none;
-  margin: 0;
-  padding: 0.7rem 0;
-  transition: all 0.4s ease;
-  width: 100%; /* Ensure full width */
-  overflow: visible; /* Ensure nothing gets cut off */
-}
-
-/* Better icon sizing and transition */
-.section-icons li {
-  margin: 0;
-  opacity: 0.7;
-  transition: all 0.4s ease;
-  transform-origin: center;
-  transform: scale(1);
-  flex: 1; /* Equal space distribution */
-}
-
-/* Replace circle animation with shiny border effect */
-.section-icon-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem; /* Reduced from 0.6rem */
-  color: var(--light-text);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-/* Add shiny border effect on hover/active instead of circle */
-.section-icon-btn::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.section-icon-btn:hover::after,
-.section-icons li.active .section-icon-btn::after {
-  opacity: 0; /* Set to 0 to hide any remaining effect */
-}
-
-/* Make icon container smaller */
-.icon-container {
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px; /* Reduced from 32px */
-  height: 28px; /* Reduced from 32px */
-  /* Glass effect */
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  /* Glass border */
-  box-shadow: 
-    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
-    0 0 0 1px rgba(255, 255, 255, 0.05),
-    0 4px 12px rgba(0, 0, 0, 0.2);
-  overflow: visible;
-}
-
-.section-icons li.active .icon-container {
-  background: rgba(157, 78, 221, 0.15);
-  box-shadow: 
-    inset 0 0 0 1px rgba(157, 78, 221, 0.3),
-    0 0 0 1px rgba(157, 78, 221, 0.1),
-    0 4px 12px rgba(157, 78, 221, 0.2);
-}
-
-.section-icon-btn:hover .icon-container {
-  transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 
-    inset 0 0 0 1px rgba(255, 255, 255, 0.2),
-    0 0 0 1px rgba(255, 255, 255, 0.1),
-    0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
-/* Icon glow effect for active state */
-.section-icons li.active .icon-container::after {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: 14px;
-  background: radial-gradient(circle at center, rgba(157, 78, 221, 0.4) 0%, transparent 70%);
-  opacity: 0.6;
-  z-index: -1;
-  filter: blur(6px);
-}
-
-/* Desktop layout adjustments for better icon visibility */
-@media (min-width: 769px) {
-  .navbar-content {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 1rem;
-  }
-  
-  .navbar-primary {
-    width: auto;
-    padding: 0.8rem 0;
-    justify-content: center; /* Center the title */
-    flex-shrink: 0; /* Prevent title from shrinking */
-    max-width: 50%; /* Limit title width on desktop */
-  }
-  
-  .navbar-sections {
-    width: auto;
-    border-top: none;
-    margin-left: auto;
-    flex-grow: 1; /* Allow section to grow */
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .section-icons {
-    width: auto;
-    justify-content: flex-end;
-    padding: 0.7rem 0;
-  }
-  
-  .section-icons li {
-    margin: 0 0.7rem; /* More consistent spacing */
-    flex: 0 0 auto; /* Don't expand to fill space */
-  }
-  
-  /* Ensure last icon is always visible */
-  .section-icons li:last-child {
-    margin-right: 0;
-  }
-}
-
-/* Smaller icons in mobile view */
-@media (max-width: 480px) {
-  .icon-container {
-    width: 24px; /* Increased from 20px */
-    height: 24px; /* Increased from 20px */
-    border-radius: 10px;
-  }
-  
-  .section-icons li.active .icon-container::after {
-    border-radius: 12px;
-  }
-  
-  .section-icons {
-    padding: 0.5rem 0;
-  }
-  
-  .navbar-sections {
-    max-height: 84px;
-  }
-  
-  .section-icons li.inactive {
-    transform: scale(0.8);
-  }
-}
-
-/* Clean navbar implementation - replacing all previous navbar styles */
-/* This completely replaces all previous navbar styling to avoid conflicts */
-
-/* Basic navbar structure */
-.navbar-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: rgba(18, 18, 18, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-
-.navbar {
-  display: flex;
-  width: 100%;
-  max-width: 1000px; /* Increased width from 600px */
-  padding: 0;
-  background: none;
-  box-shadow: none;
-  border: none;
-  box-sizing: border-box;
-  transition: max-width 0.3s ease, padding 0.3s ease;
-}
-
-.navbar-content {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Primary navbar section with logo and title */
-.navbar-primary {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 0.8rem 1rem;
-  height: 60px; /* Fixed height */
-  box-sizing: border-box;
-  flex: 2;
-  text-align: left;
-  padding-left: 1.5rem;
-  height: 50px; /* Reduced height from 60px */
-}
-
-.navbar.scrolled .navbar-primary {
-  height: 45px; /* Further reduce height when scrolled */
+  height: 45px;
   padding: 0.6rem 1.5rem;
 }
 
@@ -1575,150 +96,166 @@ footer {
   font-size: 1.25rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.95);
-  transition: all 0.3s ease;
   text-align: left;
-  max-width: 350px; /* Increased from 180px */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 350px;
   text-transform: capitalize;
+  transition: all 0.3s ease;
 }
 
 .navbar.scrolled .section-title {
   font-size: 1.1rem;
 }
 
-/* Icons section */
-.navbar-sections {
-  width: 100%;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  max-height: 60px;
-  opacity: 1;
-  overflow: visible;
-}
-
-.section-icons {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  margin: 0;
-  padding: 0.5rem 0;
-}
-
-/* Clean navbar implementation - replacing conflicting styles */
-/* Reset all icon container styles to remove borders and ensure clean display */
-.icon-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  /* Remove ALL borders and styling */
-  background: none;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  border-radius: 0;
-  box-shadow: none;
-  border: none;
-  overflow: visible;
-  transition: transform 0.2s ease;
-}
-
-/* Remove any active state effects that might add borders */
-.section-icons li.active .icon-container {
-  background: none;
-  box-shadow: none;
-  border: none;
-  border-radius: 0;
-}
-
-.section-icons li.active .icon-container::after {
-  display: none;
-}
-
-/* Single-row navbar layout */
-.navbar-content {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.navbar-primary {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: auto;
-  flex: 1;
-}
-
+/* Icons navigation section */
 .navbar-sections {
   width: auto;
   border-top: none;
   display: flex;
   align-items: center;
+  flex: 2;
+  justify-content: flex-end;
 }
 
-/* Ensure icons stay on one line */
-.section-icons {
+.navbar-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  gap: 1rem;
   align-items: center;
-  flex-wrap: nowrap;
-  padding: 0.5rem 0;
 }
 
-/* Keep hover effect without transforming container */
-.section-icon-btn:hover {
-  color: var(--secondary-color);
+.navbar-links li {
+  padding: 0;
+  margin: 0;
 }
 
-.section-icon-btn:hover .icon-container {
-  transform: none;
+/* Navigation link styling */
+.nav-link {
   background: none;
-  box-shadow: none;
+  border: none;
+  color: var(--color-text-primary);
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer !important;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-/* Smaller layout adjustments to ensure title and icons fit on one line */
-@media (max-width: 480px) {
-  .section-title {
-    font-size: 1rem;
-    max-width: 50%;
-  }
-  
-  .navbar-logo img {
-    height: 20px;
-  }
-  
-  .icon-container {
-    width: 20px;
-    height: 20px;
-  }
-  
-  .section-icon-btn {
-    padding: 0.3rem;
-  }
-  
-  .section-icons {
-    padding: 0.3rem 0;
-  }
+.nav-link:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
 }
 
-/* Active section highlight enhancements */
+.nav-link:active {
+  transform: translateY(1px);
+}
+
+.nav-link svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+}
+
+/* Active state for navigation links */
 .navbar-links li.active .nav-link {
   color: var(--color-primary, #4a90e2);
   position: relative;
-  transform: translateY(-2px);
 }
 
 .navbar-links li.active .nav-link::after {
   content: '';
   position: absolute;
-  bottom: -4px;
+  bottom: -5px;
   left: 50%;
   transform: translateX(-50%);
   width: 6px;
   height: 6px;
   background-color: var(--color-primary, #4a90e2);
   border-radius: 50%;
+}
+
+/* Section styling */
+section[id] {
+  display: block;
+  position: relative;
+  scroll-margin-top: var(--navbar-height, 80px);
+  scroll-snap-margin-top: 100px; /* For older browsers */
+  z-index: 1;
+  width: 100%;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+/* Hide section ID markers */
+section[id]::before, section[id]::after {
+  display: none;
+}
+
+/* Force hide any potential fragment identifiers */
+*[id]:target::before {
+  display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navbar-content {
+    flex-direction: column;
+  }
+  
+  .navbar-primary {
+    width: 100%;
+    justify-content: center;
+    flex: auto;
+  }
+  
+  .navbar-sections {
+    width: 100%;
+    justify-content: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .section-title {
+    text-align: center;
+  }
+  
+  /* Adjust hero section to account for navbar height */
+  .hero-section {
+    margin-top: 110px;
+  }
+}
+
+@media (min-width: 769px) {
+  .navbar-content {
+    padding: 0 1.5rem;
+  }
+  
+  .section-title {
+    font-size: 1.4rem;
+  }
+  
+  /* Adjust hero section for taller navbar */
+  .hero-section {
+    margin-top: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1rem;
+    max-width: 200px;
+  }
+  
+  .nav-link {
+    padding: 0.3rem;
+  }
+  
+  .navbar-links {
+    gap: 0.5rem;
+  }
 }

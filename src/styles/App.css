@@ -1,8 +1,10 @@
+/* Root CSS Variables */
 :root {
   --navbar-height: 80px;
-  --footer-height: 300px;
+  --footer-height: auto;
 }
 
+/* Main app container */
 .App {
   width: 100%;
   min-height: 100vh;
@@ -14,94 +16,57 @@
   position: relative;
 }
 
+/* Main content area that pushes footer to bottom */
 .content-wrapper {
-  flex: 1 0 auto; /* Changed to flex-grow: 1, flex-shrink: 0 to ensure it takes all available space */
+  flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - var(--footer-height, 300px)); /* Calculate height excluding footer */
-  padding-top: var(--navbar-height, 80px); /* Account for fixed navbar */
+  width: 100%;
+  padding-top: var(--navbar-height, 80px);
 }
 
+/* Main content container */
 main {
-  flex: 1 0 auto; /* Same flex treatment as content-wrapper */
+  flex: 1;
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-section {
-  width: 100%;
-  position: relative;
-  box-sizing: border-box;
-}
-
+/* Footer container - let it size naturally */
 .site-footer {
-  flex-shrink: 0; /* Prevent footer from shrinking */
   width: 100%;
+  margin-top: auto;
+}
+
+/* Section element styles for react-scroll */
+section[id] {
+  display: block;
   position: relative;
-  z-index: 10;
-  height: var(--footer-height, 300px); /* Set explicit height for footer */
+  scroll-margin-top: var(--navbar-height, 80px);
+  width: 100%;
+  padding: 3rem 0;
 }
 
-/* Hide the target fragments */
-:target::before {
-  content: "";
-  display: block;
-  height: 0; /* Adjust to match your header height */
-  margin-top: -0px; /* Negative value of header height */
-  visibility: hidden;
-}
-
-/* Style for footer navigation buttons to look like links */
-.footer-nav-button {
-  background: none;
-  border: none;
-  color: var(--color-text-primary);
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  text-align: left;
-}
-
-.footer-nav-button:hover {
-  text-decoration: underline;
-}
-
-/* Make section IDs invisible */
-section[id]::before {
-  content: "";
-  display: block;
-  height: 0;
-  margin-top: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-/* Hide any element with an ID that might be used for navigation */
-h1[id], h2[id], h3[id], h4[id], h5[id], h6[id], div[id] {
-  position: relative;
-}
-
-h1[id]::before, h2[id]::before, h3[id]::before, h4[id]::before, h5[id]::before, h6[id]::before, div[id]::before {
-  content: "";
-  display: block;
-  height: 0;
-  margin: 0;
-  visibility: hidden;
-  position: absolute;
-}
-
-/* Remove fragment indicators from the display */
-:target {
-  scroll-margin-top: 100px; /* Adds margin at the top when scrolling to target */
-}
-
-/* Remove all native URL fragment behaviors */
+/* Fix for smooth scrolling across browsers */
 html {
-  scroll-behavior: auto !important;
+  height: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth; /* Enable native smooth scrolling */
 }
 
-/* Style for navigation buttons in the navbar */
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Override native scroll to allow react-scroll to work */
+html, body {
+  scroll-behavior: auto;
+}
+
+/* Style for navigation links in the navbar */
 .nav-link {
   background: none;
   border: none;
@@ -235,4 +200,9 @@ html, body {
   right: 0;
   z-index: 1000;
   height: var(--navbar-height, 80px);
+}
+
+/* Style for active link states can be handled with :target selector */
+:target ~ .navbar-links li a[href*="target"] {
+  color: var(--color-primary, #4a90e2);
 }
