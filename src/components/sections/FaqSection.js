@@ -72,7 +72,7 @@ const FaqSection = () => {
                 </div>
                 
                 <div className="instructor-links">
-                  <a href="https://ishcrafty.studio" target="_blank" rel="noopener noreferrer" className="instructor-link">
+                  <a href="https://wishcrafty.studio" target="_blank" rel="noopener noreferrer" className="instructor-link">
                     Wishcrafty.Studio <span className="arrow-icon">→</span>
                   </a>
                   <a href="https://harshit.page" target="_blank" rel="noopener noreferrer" className="instructor-link">
