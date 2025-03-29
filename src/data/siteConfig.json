@@ -80,5 +80,11 @@
     "ogImage": "/images/og-image.jpg",
     "twitterCard": "summary_large_image",
     "twitterCreator": "@harshittells"
+  },
+  "referralProgram": {
+    "enabled": true,
+    "amountOff": "₹200",
+    "instruction": "Enter the email of the person who referred you in the 'Referred by' field during checkout. (Use the email which was used by them during registration)",
+    "note": "The referral discount is limited to ₹800 per person (first 4 referrals only) under our fair-use policy. The reimbursement will be processed within 7 days of the cohort start date."
   }
 }
